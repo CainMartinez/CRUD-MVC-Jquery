@@ -1,6 +1,21 @@
 <html>
 <head>
     <title>Add Data</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" />
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+    	<script type="text/javascript">
+        	$(function() {
+        		$('#date').datepicker({
+        			dateFormat: 'dd/mm/yy', 
+        			changeMonth: true,
+        			changeYear: true,
+        			yearRange: '1900:2030',
+        			onSelect: function(selectedDate) {
+        			}
+        		});
+        	});
+	    </script>
 </head>
 
 <body>
@@ -10,16 +25,16 @@
             <table width="25%" border="0">
                 <tr> 
                     <td>Cadastral Reference</td>
-                    <td><input type="text" name="cadastral_reference"></td>
+                    <td><input type="text" name="cadastral_reference" required></td>
                 </tr>
                 <tr> 
                     <td>Square Meters</td>
-                    <td><input type="text" name="square_meters"></td>
+                    <td><input type="text" name="square_meters" required></td>
                 </tr>
                 <tr> 
                     <td>Property Type</td>
                     <td>
-                        <input type="radio" id="house" name="property_type" value="House">
+                        <input type="radio" id="house" name="property_type" value="House" required>
                         <label for="house">House</label><br>
                         <input type="radio" id="apartment" name="property_type" value="Apartment">
                         <label for="apartment">Apartment</label><br>
@@ -28,12 +43,39 @@
                     </td>
                 </tr>
                 <tr> 
-                    <td>Number of Rooms</td>
-                    <td><input type="text" name="number_of_rooms"></td>
+                    <td>Characteristics</td>
+                    <td>
+                        <input type="checkbox" id="balcony" name="characteristics[]" value="Balcony">
+                        <label for="balcony">Balcony</label><br>
+                        <input type="checkbox" id="garage" name="characteristics[]" value="Garage">
+                        <label for="garage">Garage</label><br>
+                        <input type="checkbox" id="pool" name="characteristics[]" value="Pool">
+                        <label for="pool">Pool</label><br>
+                        <input type="checkbox" id="garden" name="characteristics[]" value="Garden">
+                        <label for="garden">Garden</label><br>
+                    </td>
                 </tr>
                 <tr> 
+                    <td>Number of Rooms</td>
+                    <td>
+                        <select name="number_of_rooms" required>
+                            <option value="">Select number of rooms</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                <tr> 
                     <td>Comment</td>
-                    <td><textarea name="comment" rows="4" cols="50"></textarea></td>
+                    <td><textarea name="comment" rows="4" cols="50" required></textarea></td>
+                </tr>
+                <tr> 
+                    <td>Date of publication</td>
+                    <td><input type="text" name="date" id="date" required></td>
+                </tr>
+                <tr> 
+                    <td>Price</td>
+                    <td><input type="text" name="price" required></td>
                 </tr>
                 <tr> 
                     <td></td>
@@ -41,6 +83,6 @@
                 </tr>
             </table>
         </form>
-        <script src="add.js"></script>
+        <!-- <script src="add.js"></script> -->
 </body>
 </html>

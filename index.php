@@ -23,8 +23,11 @@ $result = mysqli_query($conn, "SELECT * FROM property ORDER BY id DESC");
         <td>Cadastral Reference</td>
         <td>Square Meters</td>
         <td>Property Type</td>
+        <td>Characteristics</td>
         <td>Number of Rooms</td>
         <td>Comment</td>
+        <td>Date of Publication</td>
+        <td>Price</td>
         <td>Update</td>
     </tr>
     <?php 
@@ -35,8 +38,11 @@ if($result !== false) {
             echo "<td>".$res['cadastral_reference']."</td>";
             echo "<td>".$res['square_meters']."</td>";
             echo "<td>".$res['property_type']."</td>";
+            echo "<td>".$res['characteristics']."</td>";
             echo "<td>".$res['number_of_rooms']."</td>";
             echo "<td>".$res['comment']."</td>";
+            echo "<td>".$res['date_publication']."</td>";
+            echo "<td>".$res['price']."</td>";
             echo "<td><a href=\"edit.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";      
         }
     } else {
