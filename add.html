@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>Add Data</title>
+</head>
+
+<body>
+    <a href="index.php">Home</a>
+    <br/><br/>
+    <form action="add.php" method="post" name="form1">
+            <table width="25%" border="0">
+                <tr> 
+                    <td>Cadastral Reference</td>
+                    <td><input type="text" name="cadastral_reference"></td>
+                </tr>
+                <tr> 
+                    <td>Square Meters</td>
+                    <td><input type="text" name="square_meters"></td>
+                </tr>
+                <tr> 
+                    <td>Property Type</td>
+                    <td>
+                        <input type="radio" id="house" name="property_type" value="House">
+                        <label for="house">House</label><br>
+                        <input type="radio" id="apartment" name="property_type" value="Apartment">
+                        <label for="apartment">Apartment</label><br>
+                        <input type="radio" id="other" name="property_type" value="Other">
+                        <label for="other">Other</label>
+                    </td>
+                </tr>
+                <tr> 
+                    <td>Number of Rooms</td>
+                    <td><input type="text" name="number_of_rooms"></td>
+                </tr>
+                <tr> 
+                    <td>Comment</td>
+                    <td><textarea name="comment" rows="4" cols="50"></textarea></td>
+                </tr>
+                <tr> 
+                    <td></td>
+                    <td><input type="submit" name="Submit" value="Add"></td>
+                </tr>
+            </table>
+        </form>
+        <script src="add.js"></script>
+</body>
+</html>
