@@ -1,13 +1,19 @@
 <html>
     <head>
         <title>Add Data</title>
+        <style>.error {color: #FF0000;}</style>
     </head>
     <body>
     <?php
-    
+
     //including the database connection file
     include_once("config.php");
-
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
     if(isset($_POST['Submit'])) {	
         $cadastral_reference = mysqli_real_escape_string($conn, $_POST['cadastral_reference']);
         $square_meters = mysqli_real_escape_string($conn, $_POST['square_meters']);
@@ -17,11 +23,33 @@
         $characteristics = isset($_POST['characteristics']) ? implode(", ", $_POST['characteristics']) : ""; 
         $date_publication = isset($_POST['date_publication']) ? mysqli_real_escape_string($conn, $_POST['date_publication']) : "";
         $price = mysqli_real_escape_string($conn, $_POST['price']); 
+        // $cadastralErr = $typeErr = $comentErr ="";
 
         if (!preg_match("/^[a-zA-Z0-9]*$/", $cadastral_reference)) {
             echo "<font color='red'>Invalid cadastral reference.</font><br/>";
             return;
         }
+        // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        //     if (empty($_POST["cadastral_reference"])) {
+        //         $nameErr = "Cadastral reference is required";
+        //     } else {
+        //         $name = test_input($_POST["cadastral_reference"]);
+        //         // check if name only contains letters and whitespace
+        //         if (!preg_match("/^[a-zA-Z]*$/",$cadastral_reference)) {
+        //             $nameErr = "Only letters allowed";
+        //         }
+        //     }
+        //     if (empty($_POST["comment"])) {
+        //         $comment = "";
+        //     } else {
+        //         $comment = test_input($_POST["comment"]);
+        //     }
+        //     if (empty($_POST["proterty_type"])) {
+        //         $typeErr = "Property type is required";
+        //     } else {
+        //         $proterty_type = test_input($_POST["proterty_type"]);
+        //     }
+        // }
         if (!preg_match("/^[0-9]*$/", $square_meters)) {
             echo "<font color='red'>Invalid square meters.</font><br/>";
             return;

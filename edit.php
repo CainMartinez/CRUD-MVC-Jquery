@@ -2,8 +2,7 @@
 // including the database connection file
 include_once("config.php");
 
-if(isset($_POST['update']))
-{	
+if(isset($_POST['update'])){	
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     
     $cadastral_reference = mysqli_real_escape_string($conn, $_POST['cadastral_reference']);
@@ -12,8 +11,9 @@ if(isset($_POST['update']))
     $number_of_rooms = mysqli_real_escape_string($conn, $_POST['number_of_rooms']);
     $comment = mysqli_real_escape_string($conn, $_POST['comment']);
     $date_publication = mysqli_real_escape_string($conn, $_POST['date_publication']);
-    $characteristics = isset($_POST['characteristics']) ? $_POST['characteristics'] : "";
     $price = mysqli_real_escape_string($conn, $_POST['price']);
+    $characteristics = isset($_POST['characteristics']) ? $_POST['characteristics'] : "";
+    $characteristics = is_array($characteristics) ? implode(", ", $characteristics) : $characteristics;
 
     if (!preg_match("/^[a-zA-Z0-9]*$/", $cadastral_reference)) {
         echo "<font color='red'>Invalid cadastral reference.</font><br/>";
@@ -58,11 +58,11 @@ if(isset($_POST['update']))
         if(empty($price)) {
             echo "<font color='red'>Price field is empty.</font><br/>";
         }
-
     } else {	
         //updating the table
-        $result = mysqli_query($conn, "UPDATE property SET cadastral_reference='$cadastral_reference',square_meters='$square_meters',property_type='$property_type',number_of_rooms='$number_of_rooms',comment='$comment',price='$price',date_publication='$date_publication' WHERE id=$id");
+        $result = mysqli_query($conn, "UPDATE property SET cadastral_reference='$cadastral_reference',square_meters='$square_meters',property_type='$property_type',number_of_rooms='$number_of_rooms',comment='$comment',price='$price',date_publication='$date_publication',characteristics='$characteristics' WHERE id=$id");
         //redirectig to the display page. In our case, it is index.php
+        
         header("Location: index.php");
     }
 }
