@@ -72,7 +72,7 @@ while($res = mysqli_fetch_array($result))
         </tr>
         <tr> 
             <td>Price</td>
-            <td><input type="text" name="price" pattern="/^[0-9]*$/" value="<?php echo $price;?>"></td>
+            <td><input type="text" name="price" pattern="[0-9]*" value="<?php echo $price;?>"></td>
         </tr>
         <tr>
             <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
