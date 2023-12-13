@@ -4,6 +4,7 @@
     </head>
     <body>
     <?php
+    
     //including the database connection file
     include_once("config.php");
 
@@ -17,6 +18,22 @@
         $date_publication = isset($_POST['date_publication']) ? mysqli_real_escape_string($conn, $_POST['date_publication']) : "";
         $price = mysqli_real_escape_string($conn, $_POST['price']); 
 
+        if (!preg_match("/^[a-zA-Z0-9]*$/", $cadastral_reference)) {
+            echo "<font color='red'>Invalid cadastral reference.</font><br/>";
+            return;
+        }
+        if (!preg_match("/^[0-9]*$/", $square_meters)) {
+            echo "<font color='red'>Invalid square meters.</font><br/>";
+            return;
+        }
+        if (!preg_match("/^[0-9]*$/", $number_of_rooms)) {
+            echo "<font color='red'>Invalid number of rooms.</font><br/>";
+            return;
+        }
+        if (!preg_match("/^[0-9]*$/", $price)) {
+            echo "<font color='red'>Invalid price.</font><br/>";
+            return;
+        }
         // checking empty fields
         if(empty($cadastral_reference) || empty($square_meters) || empty($property_type) || empty($number_of_rooms) || empty($comment) || empty($characteristics) || empty($price) || empty($date_publication)) {
 

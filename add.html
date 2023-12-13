@@ -6,7 +6,7 @@
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
     	<script type="text/javascript">
         	$(function() {
-        		$('#date').datepicker({
+        		$('#date_publication').datepicker({
         			dateFormat: 'dd/mm/yy', 
         			changeMonth: true,
         			changeYear: true,
@@ -16,8 +16,8 @@
         		});
         	});
 	    </script>
+        
 </head>
-
 <body>
     <a href="index.php">Home</a>
     <br/><br/>
@@ -25,11 +25,11 @@
             <table width="25%" border="0">
                 <tr> 
                     <td>Cadastral Reference</td>
-                    <td><input type="text" name="cadastral_reference" required></td>
+                    <td><input type="text" name="cadastral_reference" pattern="[a-zA-Z0-9]*" required></td>
                 </tr>
                 <tr> 
                     <td>Square Meters</td>
-                    <td><input type="text" name="square_meters" required></td>
+                    <td><input type="text" name="square_meters" pattern="\d*" required></td>
                 </tr>
                 <tr> 
                     <td>Property Type</td>
@@ -71,11 +71,11 @@
                 </tr>
                 <tr> 
                     <td>Date of publication</td>
-                    <td><input type="text" name="date" id="date" required></td>
+                    <td><input type="text" name="date_publication" id="date_publication" required></td>
                 </tr>
                 <tr> 
                     <td>Price</td>
-                    <td><input type="text" name="price" required></td>
+                    <td><input type="text" name="price" pattern="/^[0-9]*$/" required></td>
                 </tr>
                 <tr> 
                     <td></td>
@@ -83,6 +83,5 @@
                 </tr>
             </table>
         </form>
-        <!-- <script src="add.js"></script> -->
 </body>
 </html>

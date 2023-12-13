@@ -25,7 +25,7 @@ while($res = mysqli_fetch_array($result))
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
     	<script type="text/javascript">
         	$(function() {
-        		$('#date').datepicker({
+        		$('#date_publication').datepicker({
         			dateFormat: 'dd/mm/yy', 
         			changeMonth: true, 
         			changeYear: true, 
@@ -45,11 +45,11 @@ while($res = mysqli_fetch_array($result))
     <table border="0">
         <tr> 
             <td>Cadastral Reference</td>
-            <td><input type="text" name="cadastral_reference" value="<?php echo $cadastral_reference;?>"></td>
+            <td><input type="text" name="cadastral_reference" pattern="[a-zA-Z0-9]*" value="<?php echo $cadastral_reference;?>"></td>
         </tr>
         <tr> 
             <td>Square Meters</td>
-            <td><input type="text" name="square_meters" value="<?php echo $square_meters;?>"></td>
+            <td><input type="text" name="square_meters" pattern="\d*" value="<?php echo $square_meters;?>"></td>
         </tr>
         <tr> 
             <td>Property Type</td>
@@ -65,14 +65,14 @@ while($res = mysqli_fetch_array($result))
         </tr>
         <tr> 
             <td>Date of Publication</td>
-            <td><input type="text" name="date_publication" id="date" value="<?php echo $date_publication;?>"></td>
+            <td><input type="text" name="date_publication" id="date_publication" value="<?php echo $date_publication;?>"></td>
         <tr> 
             <td>Characteristics</td>
             <td><input type="text" name="characteristics" value="<?php echo $characteristics;?>"></td>
         </tr>
         <tr> 
             <td>Price</td>
-            <td><input type="text" name="price" value="<?php echo $price;?>"></td>
+            <td><input type="text" name="price" pattern="/^[0-9]*$/" value="<?php echo $price;?>"></td>
         </tr>
         <tr>
             <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>

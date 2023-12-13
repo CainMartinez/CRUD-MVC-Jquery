@@ -1,10 +1,10 @@
 <?php
 //including the database connection file
 include_once("config.php");
-
 //fetching data in descending order (lastest entry first)
 mysqli_set_charset($conn, "utf8");
 $result = mysqli_query($conn, "SELECT * FROM property ORDER BY id DESC");
+
 ?>
 
 <html>
@@ -31,7 +31,7 @@ $result = mysqli_query($conn, "SELECT * FROM property ORDER BY id DESC");
         <td>Update</td>
     </tr>
     <?php 
-if($result !== false) {
+if($result !== false ) {
     while($res = mysqli_fetch_array($result)) {         
             echo "<tr>";
             echo "<td>".$res['id']."</td>";

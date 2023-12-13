@@ -1,33 +1,41 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form[name="form1"]');
-    
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Detiene la acción de envío del formulario
+document.querySelector('form[name="form1"]').addEventListener('submit', function(event) {
+    // Prevent the form from submitting
+    event.preventDefault();
 
-        const cadastralReference = document.querySelector('input[name="cadastral_reference"]').value;
-        const squareMeters = document.querySelector('input[name="square_meters"]').value;
-        const propertyType = document.querySelector('input[name="property_type"]:checked');
-        const numberOfRooms = document.querySelector('select[name="number_of_rooms"]').value;
-        const comment = document.querySelector('textarea[name="comment"]').value;
-        const characteristics = Array.from(document.querySelectorAll('input[name="characteristics[]"]:checked')).map(cb => cb.value); // New field
-        const price = document.querySelector('input[name="price"]').value; // New field
+    // Get form fields
+    var cadastral_reference = document.querySelector('input[name="cadastral_reference"]');
+    var square_meters = document.querySelector('input[name="square_meters"]');
+    var price = document.querySelector('input[name="price"]');
+    var comment = document.querySelector('textarea[name="comment"]');
+    var date_publication = document.querySelector('input[name="date_publication"]');
+    var number_of_rooms = document.querySelector('select[name="number_of_rooms"]');
 
-        if (!cadastralReference) {
-            alert('Please enter a cadastral reference.');
-        } else if (!squareMeters || isNaN(squareMeters)) {
-            alert('Please enter a valid number for square meters.');
-        } else if (!propertyType) {
-            alert('Please select a property type.');
-        } else if (!numberOfRooms || isNaN(numberOfRooms)) {
-            alert('Please enter a valid number for number of rooms.');
-        } else if (!comment) {
-            alert('Please enter a comment.');
-        } else if (characteristics.length === 0) { // New check
-            alert('Please select at least one characteristic.');
-        } else if (!price || isNaN(price)) { // New check
-            alert('Please enter a valid price.');
-        } else {
-            form.submit(); // Envía el formulario solo si todas las comprobaciones de validación son exitosas
-        }
-    });
+    // Check for empty fields
+    if (!cadastral_reference.value.trim() || !square_meters.value.trim() || !price.value.trim() || !comment.value.trim() || !date_publication.value.trim() || !number_of_rooms.value.trim()) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    // Validate fields with regex
+    var cadastral_reference_regex = /^[a-zA-Z0-9]*$/;
+    var square_meters_regex = /^[0-9]*$/;
+    var price_regex = /^[0-9]*$/;
+
+    if (!cadastral_reference_regex.test(cadastral_reference.value)) {
+        alert('Invalid cadastral reference.');
+        return;
+    }
+
+    if (!square_meters_regex.test(square_meters.value)) {
+        alert('Invalid square meters.');
+        return;
+    }
+
+    if (!price_regex.test(price.value)) {
+        alert('Invalid price.');
+        return;
+    }
+
+    // If all validations pass, submit the form
+    event.target.submit();
 });

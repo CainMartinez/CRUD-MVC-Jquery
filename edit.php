@@ -15,7 +15,22 @@ if(isset($_POST['update']))
     $characteristics = isset($_POST['characteristics']) ? $_POST['characteristics'] : "";
     $price = mysqli_real_escape_string($conn, $_POST['price']);
 
-
+    if (!preg_match("/^[a-zA-Z0-9]*$/", $cadastral_reference)) {
+        echo "<font color='red'>Invalid cadastral reference.</font><br/>";
+        return;
+    }
+    if (!preg_match("/^[0-9]*$/", $square_meters)) {
+        echo "<font color='red'>Invalid square meters.</font><br/>";
+        return;
+    }
+    if (!preg_match("/^[0-9]*$/", $number_of_rooms)) {
+        echo "<font color='red'>Invalid number of rooms.</font><br/>";
+        return;
+    }
+    if (!preg_match("/^[0-9]*$/", $price)) {
+        echo "<font color='red'>Invalid price.</font><br/>";
+        return;
+    }
     // checking empty fields
     if(empty($cadastral_reference) || empty($square_meters) || empty($property_type) || empty($number_of_rooms) || empty($comment) || empty($characteristics) || empty($price) || empty($date_publication)) {	
 
@@ -46,7 +61,7 @@ if(isset($_POST['update']))
 
     } else {	
         //updating the table
-        $result = mysqli_query($conn, "UPDATE property SET cadastral_reference='$cadastral_reference',square_meters='$square_meters',property_type='$property_type',number_of_rooms='$number_of_rooms',comment='$comment' WHERE id=$id");
+        $result = mysqli_query($conn, "UPDATE property SET cadastral_reference='$cadastral_reference',square_meters='$square_meters',property_type='$property_type',number_of_rooms='$number_of_rooms',comment='$comment',price='$price',date_publication='$date_publication' WHERE id=$id");
         //redirectig to the display page. In our case, it is index.php
         header("Location: index.php");
     }
