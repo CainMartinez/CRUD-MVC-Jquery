@@ -1,1 +1,1 @@
-<img src="view/img/bienvenido.png">
+<img src="view/img/bienvenido.png" class="responsive-image">

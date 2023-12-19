@@ -1,208 +1,170 @@
-function validate_usuario(texto){
-    if (texto.length > 0){
-        var reg=/^[a-zA-Z]*$/;
+function validate_cadastral_reference(texto) {
+    if (texto.length > 0) {
+        var reg = /^[a-zA-Z0-9]*$/;
         return reg.test(texto);
     }
     return false;
 }
 
-function validate_password(texto){
-    if (texto.length > 0){
-        var reg = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+function validate_square_meters(texto) {
+    if (texto.length > 0) {
+        var reg = /^\d*$/;
         return reg.test(texto);
     }
     return false;
 }
 
-function validate_nombre(texto){
-    if (texto.length > 0){
-        var reg=/^[a-zA-Z]*$/;
-        return reg.test(texto);
-    }
-    return false;
-}
-
-function validate_DNI(dni){
-  var numero = dni.substr(0,dni.length-1);
-  var let = dni.substr(dni.length-1,1);
-  numero = numero % 23;
-  var letra='TRWAGMYFPDXBNJZSQVHLCKET';
-  letra=letra.substring(numero,numero+1);
-  if (letra!=let){
-      return false;
-  }else{
-      return true;
-  }
-}
-
-function validate_sexo(texto){
+function validate_property_type(array) {
     var i;
-    var ok=0;
-    for(i=0; i<texto.length;i++){
-        if(texto[i].checked){
-            ok=1
+    var ok = 0;
+    for (i = 0; i < array.length; i++) {
+        if (array[i].checked) {
+            ok = 1
         }
     }
- 
-    if(ok==1){
+
+    if (ok == 1) {
         return true;
     }
-    if(ok==0){
+    if (ok == 0) {
         return false;
     }
 }
 
-function validate_fecha(texto){
-    if (texto.length > 0){
+function validate_characteristics(array) {
+    var i;
+    var ok = 0;
+    for (i = 0; i < array.length; i++) {
+        if (array[i].checked) {
+            ok = 1
+        }
+    }
+
+    if (ok == 1) {
         return true;
     }
-    return false;
-}
-
-function validate_edad(texto){
-    if (texto.length > 0){
-        var reg=/^[0-9]{1,2}$/;
-        return reg.test(texto);
+    if (ok == 0) {
+        return false;
     }
-    return false;
 }
 
-function validate_pais(texto){
-    if (texto.length > 0){
-        return true;
-    }
-    return false;
-}
-
-function validate_idioma(array){
-    var check=false;
-    for ( var i = 0, l = array.options.length, o; i < l; i++ ){
+function validate_number_of_rooms(array) {
+    var check = false;
+    for (var i = 0, l = array.options.length, o; i < l; i++) {
         o = array.options[i];
-        if ( o.selected ){
-            check= true;
+        if (o.selected) {
+            check = true;
         }
     }
     return check;
 }
 
-function validate_observaciones(texto){
-    if (texto.length > 0){
+function validate_comment(texto) {
+    if (texto.length > 0) {
         return true;
     }
     return false;
 }
 
-function validate_aficion(array){
-    var i;
-    var ok=0;
-    for(i=0; i<array.length;i++){
-        if(array[i].checked){
-            ok=1
-        }
-    }
- 
-    if(ok==1){
+function validate_date_publication(texto) {
+    if (texto.length > 0) {
         return true;
     }
-    if(ok==0){
-        return false;
-    }
+    return false;
 }
 
-function validate(){
+function validate_price(texto) {
+    if (texto.length > 0) {
+        var reg = /^[0-9]*$/;
+        return reg.test(texto);
+    }
+    return false;
+}
+function validate() {
     // console.log('hola validate js');
     // return false;
 
-    var check=true;
-    
-    var v_usuario=document.getElementById('usuario').value;
+    var check = true;
+
+    var v_cadastral_reference = document.getElementById('cadastral_reference').value;
     // console.log(v_usuario);
     // return false;
-    var v_password=document.getElementById('pass').value;
-    var v_nombre=document.getElementById('nombre').value;
-    var v_DNI=document.getElementById('DNI').value;
-    var v_sexo=document.getElementsByName('sexo');
-    var v_fecha_nacimiento=document.getElementById('fecha').value;
-    var v_edad=document.getElementById('edad').value;
-    var v_idioma=document.getElementById('idioma[]');
-    var v_observaciones=document.getElementById('observaciones').value;
-    var v_aficion=document.getElementsByName('aficion[]');
-    
-    var r_usuario=validate_usuario(v_usuario);
+    var v_square_meters = document.getElementById('square_meters').value;
+    var v_property_type = document.getElementsByName('property_type');
+    var v_characteristics = document.getElementsByName('characteristics[]');
+    var v_number_of_rooms = document.getElementById('number_of_rooms[]');
+    var v_comment = document.getElementById('coment').value;
+    var v_date_publication = document.getElementById('fecha').value;
+    var v_price = document.getElementById('price').value;
+
+
+    var r_cadastral_reference = validate_cadastral_reference(v_cadastral_reference);
     // console.log(r_usuario);
     // return false;
-    var r_password=validate_password(v_password);
-    var r_nombre=validate_nombre(v_nombre);
-    //var r_DNI=validate_DNI(v_DNI);
-    var r_DNI=true;
-    var r_sexo=validate_sexo(v_sexo);
-    var r_fecha_nacimiento=validate_fecha(v_fecha_nacimiento);
-    var r_edad=validate_edad(v_edad);
-    var r_idioma=validate_idioma(v_idioma);
-    var r_observaciones=validate_observaciones(v_observaciones);
-    var r_aficion=validate_aficion(v_aficion);
-    
-    if(!r_usuario){
-        document.getElementById('error_usuario').innerHTML = " * El usuario introducido no es valido";
+    var r_square_meters = validate_square_meters(v_square_meters);
+    var r_property_type = validate_property_type(v_property_type);
+    var r_characteristics = validate_characteristics(v_characteristics);
+    var r_number_of_rooms = validate_number_of_rooms(v_number_of_rooms);
+    var r_comment = validate_comment(v_comment);
+    var r_date_publication = validate_date_publication(v_date_publication);
+    var r_price = validate_price(v_price);
+
+    if (!r_cadastral_reference) {
+        document.getElementById('error_cadastral_reference').innerHTML = " * La referencia catastral introducida no es válida";
         // console.log(r_usuario);
         // return false;
-        check=false;
-    }else{
-        document.getElementById('error_usuario').innerHTML = "";
+        check = false;
+    } else {
+        document.getElementById('error_cadastral_reference').innerHTML = "";
     }
-    if(!r_password){
-        document.getElementById('error_pass').innerHTML = " * La contraseña introducida no es valida";
-        check=false;
-    }else{
-        document.getElementById('error_pass').innerHTML = "";
+    if (!r_square_meters) {
+        document.getElementById('error_square_meters').innerHTML = " * Los metros cuadrados introducidos no son válidos";
+        check = false;
+    } else {
+        document.getElementById('error_square_meters').innerHTML = "";
     }
-    if(!r_nombre){
-        document.getElementById('error_nombre').innerHTML = " * El nombre introducido no es valido";
-        check=false;
-    }else{
-        document.getElementById('error_nombre').innerHTML = "";
+
+    if (!r_property_type) {
+        document.getElementById('error_property_type').innerHTML = " * No has seleccionado ningún tipo de propiedad";
+        check = false;
+    } else {
+        document.getElementById('error_property_type').innerHTML = "";
     }
-    if(!r_DNI){
-        document.getElementById('error_DNI').innerHTML = " * El DNI introducido no es valido";
-        check=false;
-    }else{
-        document.getElementById('error_DNI').innerHTML = "";
+
+    if (!r_characteristics) {
+        document.getElementById('error_characteristics').innerHTML = " * No has seleccionado ninguna característica";
+        check = false;
+    } else {
+        document.getElementById('error_characteristics').innerHTML = "";
     }
-    if(!r_sexo){
-        document.getElementById('error_sexo').innerHTML = " * No has seleccionado ningun genero";
-        check=false;
-    }else{
-        document.getElementById('error_sexo').innerHTML = "";
+
+    if (!r_number_of_rooms) {
+        document.getElementById('error_number_of_rooms').innerHTML = " * No has seleccionado el número de habitaciones";
+        check = false;
+    } else {
+        document.getElementById('error_number_of_rooms').innerHTML = "";
     }
-    if(!r_fecha_nacimiento){
-        document.getElementById('error_fecha_nacimiento').innerHTML = " * No has introducido ninguna fecha";
-        check=false;
-    }else{
-        document.getElementById('error_fecha_nacimiento').innerHTML = "";
+
+    if (!r_comment) {
+        document.getElementById('error_comment').innerHTML = " * El comentario introducido no es válido";
+        check = false;
+    } else {
+        document.getElementById('error_comment').innerHTML = "";
     }
-    if(!r_edad){
-        document.getElementById('error_edad').innerHTML = " * La edad introducida no es valida";
-        check=false;
-    }else{
-        document.getElementById('error_edad').innerHTML = "";
+
+    if (!r_date_publication) {
+        document.getElementById('error_date_publication').innerHTML = " * No has introducido ninguna fecha de publicación";
+        check = false;
+    } else {
+        document.getElementById('error_date_publication').innerHTML = "";
     }
-    if(!r_idioma){
-        document.getElementById('error_idioma').innerHTML = " * No has seleccionado ningun idioma";
-        check=false;
-    }else{
-        document.getElementById('error_idioma').innerHTML = "";
+
+    if (!r_price) {
+        document.getElementById('error_price').innerHTML = " * El precio introducido no es válido";
+        check = false;
+    } else {
+        document.getElementById('error_price').innerHTML = "";
     }
-    if(!r_observaciones){
-        document.getElementById('error_observaciones').innerHTML = " * El texto introducido no es valido";
-        check=false;
-    }else{
-        document.getElementById('error_observaciones').innerHTML = "";
-    }
-    if(!r_aficion){
-        document.getElementById('error_aficion').innerHTML = " * No has seleccionado ninguna aficion";
-        check=false;
-    }else{
-        document.getElementById('error_aficion').innerHTML = "";
-    }
+
     return check;
 }

@@ -28,7 +28,7 @@ switch ($_GET['op']) {
         break;
 
     case 'create';
-        // $data = 'hola crtl property create';
+        // $data = 'Create property OK';
         // die('<script>console.log('.json_encode( $data ) .');</script>');
 
         include("module/property/model/validate.php");

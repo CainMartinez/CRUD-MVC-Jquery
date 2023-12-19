@@ -79,7 +79,7 @@
 		}
 		
 		function delete_property($property){
-			$sql = "DELETE FROM property WHERE cadas='$property'";
+			$sql = "DELETE FROM property WHERE cadastral_reference='$property'";
 			
 			$conexion = connect::con();
             $res = mysqli_query($conexion, $sql);

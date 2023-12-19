@@ -17,7 +17,7 @@
 		    include("view/inc/menu.php");
 		?>
     </div>	
-    <div id="">
+<div id="" class="back">
     	<?php 
 		    include("view/inc/pages.php"); 
 		?>        
