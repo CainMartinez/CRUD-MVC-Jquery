@@ -1,107 +1,80 @@
 <div id="contenido">
-    <h1>Informacion del Usuario</h1>
+    <h1>Property Information</h1>
     <p>
-    <table border='2'>
+    <table border='2' class="contenidotable">
         <tr>
-            <td>Usuario: </td>
-            <td>
+            <td class="contenidotd">Cadastral Reference: </td>
+            <td class="contenidotd">
                 <?php
-                    echo $property['property'];
+                    echo $property['cadastral_reference'];
                 ?>
             </td>
         </tr>
     
         <tr>
-            <td>Contraseña: </td>
-            <td>
+            <td class="contenidotd">Square Meters: </td>
+            <td class="contenidotd">
                 <?php
-                    echo $property['pass'];
+                    echo $property['square_meters'];
                 ?>
             </td>
         </tr>
         
         <tr>
-            <td>Nombre: </td>
-            <td>
+            <td class="contenidotd">Property Type: </td>
+            <td class="contenidotd">
                 <?php
-                    echo $property['name'];
+                    echo $property['property_type'];
                 ?>
             </td>
         </tr>
         
         <tr>
-            <td>DNI: </td>
-            <td>
+            <td class="contenidotd">Characteristics: </td>
+            <td class="contenidotd">
                 <?php
-                    echo $property['dni'];
+                    echo $property['characteristics'];
                 ?>
             </td>
         </tr>
         
         <tr>
-            <td>Sexo: </td>
-            <td>
+            <td class="contenidotd">Number of rooms: </td>
+            <td class="contenidotd">
                 <?php
-                    echo $property['sex'];
+                    echo $property['number_of_rooms'];
                 ?>
             </td>
         </tr>
         
         <tr>
-            <td>Fecha de nacimiento: </td>
-            <td>
+            <td class="contenidotd">Publication Date: </td>
+            <td class="contenidotd">
                 <?php
-                    echo $property['birthdate'];
+                    echo $property['date_publication'];
                 ?>
             </td>
         </tr>
         
         <tr>
-            <td>Edad: </td>
-            <td>
+            <td class="contenidotd">Comment: </td>
+            <td class="contenidotd">
                 <?php
-                    echo $property['age'];
+                    echo $property['comment'];
                 ?>
             </td>
             
         </tr>
         
         <tr>
-            <td>Pais: </td>
-            <td>
+            <td class="contenidotd">Price: </td>
+            <td class="contenidotd">
                 <?php
-                    echo $property['country'];
-                ?>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>Idioma: </td>
-            <td>
-                <?php
-                    echo $property['language'];
-                ?>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>Observaciones: </td>
-            <td>
-                <?php
-                    echo $property['comment'];
-                ?>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>Aficiones: </td>
-            <td>
-                <?php
-                    echo $property['hobby'];
+                    echo $property['price'];
                 ?>
             </td>
         </tr>
     </table>
     </p>
-    <p><a href="index.php?page=controller_property&op=list">Volver</a></p>
+    <p><a href="index.php?page=controller_property&op=list">Back</a></p>
 </div>

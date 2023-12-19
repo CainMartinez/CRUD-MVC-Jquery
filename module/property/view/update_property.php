@@ -1,6 +1,6 @@
 <div id="contenido">
     <form autocomplete="on" method="post" name="aupdate_property" id="update_property" onsubmit="return validate();" action="index.php?page=controller_property&op=update">
-        <h1>Modificar usuario</h1>
+        <h1>Modify Property</h1>
         <table border='0'>
             <tr>
                 <td>Usuario: </td>

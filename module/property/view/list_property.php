@@ -1,7 +1,7 @@
 <div id="contenido" class="property-list-container">
     <div class="container" >
         <div class="row title-row">
-            <h3>Properties list</h3>
+            <h1>Properties list</h1>
         </div>
         <div class="row title-row">
         

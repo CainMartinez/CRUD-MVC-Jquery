@@ -32,7 +32,7 @@ switch ($_GET['op']) {
         // die('<script>console.log('.json_encode( $data ) .');</script>');
 
         include("module/property/model/validate.php");
-
+        $rdo = "";
         $check = true;
 
         if (isset($_POST['create'])) {
@@ -50,20 +50,20 @@ switch ($_GET['op']) {
                     $rdo = $daoproperty->insert_property($_POST);
                     // die('<script>console.log('.json_encode( $rdo ) .');</script>');
                 } catch (Exception $e) {
-                    $callback = 'index.php?page=503';
-                    die('<script>window.location.href="' . $callback . '";</script>');
+                    // $callback = 'index.php?page=503';
+                    // die('<script>window.location.href="' . $callback . '";</script>');
                 }
 
                 if ($rdo) {
                     echo '<script language="javascript">setTimeout(() => {
-                            toastr.success("Creado en la base de datos correctamente");
+                            toastr.success("New register created correctly.");
                         }, 1000);</script>';
                     echo '<script language="javascript">setTimeout(() => {
                             window.location.href="index.php?page=controller_property&op=list";
                         }, 2000);</script>';
                 } else {
-                    $callback = 'index.php?page=503';
-                    die('<script>window.location.href="' . $callback . '";</script>');
+                    // $callback = 'index.php?page=503';
+                    // die('<script>window.location.href="' . $callback . '";</script>');
                 }
             }
         }
@@ -93,7 +93,7 @@ switch ($_GET['op']) {
 
                 if ($rdo) {
                     echo '<script language="javascript">setTimeout(() => {
-                            toastr.success("Modificado en la base de datos correctamente");
+                            toastr.success("Record modified correctly in the database.");
                         }, 1000);</script>';
                     echo '<script language="javascript">setTimeout(() => {
                             window.location.href="index.php?page=controller_property&op=list";
@@ -164,7 +164,7 @@ switch ($_GET['op']) {
             }
             if ($rdo) {
                 echo '<script language="javascript">setTimeout(() => {
-                        toastr.success("Borrado en la base de datos correctamente");
+                        toastr.success("Deleted record correctly in the database.");
                     }, 1000);</script>';
                 echo '<script language="javascript">setTimeout(() => {
                         window.location.href="index.php?page=controller_property&op=list";
@@ -174,7 +174,6 @@ switch ($_GET['op']) {
                 die('<script>window.location.href="' . $callback . '";</script>');
             }
         }
-
         include("module/property/view/delete_property.php");
         break;
     default;
