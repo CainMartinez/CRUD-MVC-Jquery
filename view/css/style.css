@@ -299,3 +299,61 @@ img {
 .back{
 	background-color: lightblue;
 }
+.centered-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 10vh; 
+}
+
+.styled-button {
+	font-size: 20px;
+	padding: 10px 20px;
+	border: none;
+	color: white;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.styled-button-green {
+	background: green;
+}
+
+.styled-button-green:hover {
+	background: darkgreen;
+}
+
+.styled-button-red {
+	background: red;
+}
+
+.styled-button-red:hover {
+	background: darkred;
+}
+
+form table {
+	text-align: left;
+	margin: auto;
+}
+input[type="radio"], input[type="checkbox"] {
+	display: none;
+}
+
+input[type="radio"] + label:before, input[type="checkbox"] + label:before {
+	content: "";
+	display: inline-flex;
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+	border: 1px solid #000;
+	vertical-align: left;
+}
+
+input[type="radio"]:checked + label:before {
+	background: radial-gradient(#13829e 0%, #13829e 40%, transparent 50%, transparent);
+}
+
+input[type="checkbox"]:checked + label:before {
+	background: linear-gradient(#13829e, #13829e), no-repeat;
+	background-size: 50% 50%;
+}

@@ -6,7 +6,7 @@
             <td>Usuario: </td>
             <td>
                 <?php
-                    echo $user['user'];
+                    echo $property['property'];
                 ?>
             </td>
         </tr>
@@ -15,7 +15,7 @@
             <td>Contraseña: </td>
             <td>
                 <?php
-                    echo $user['pass'];
+                    echo $property['pass'];
                 ?>
             </td>
         </tr>
@@ -24,7 +24,7 @@
             <td>Nombre: </td>
             <td>
                 <?php
-                    echo $user['name'];
+                    echo $property['name'];
                 ?>
             </td>
         </tr>
@@ -33,7 +33,7 @@
             <td>DNI: </td>
             <td>
                 <?php
-                    echo $user['dni'];
+                    echo $property['dni'];
                 ?>
             </td>
         </tr>
@@ -42,7 +42,7 @@
             <td>Sexo: </td>
             <td>
                 <?php
-                    echo $user['sex'];
+                    echo $property['sex'];
                 ?>
             </td>
         </tr>
@@ -51,7 +51,7 @@
             <td>Fecha de nacimiento: </td>
             <td>
                 <?php
-                    echo $user['birthdate'];
+                    echo $property['birthdate'];
                 ?>
             </td>
         </tr>
@@ -60,7 +60,7 @@
             <td>Edad: </td>
             <td>
                 <?php
-                    echo $user['age'];
+                    echo $property['age'];
                 ?>
             </td>
             
@@ -70,7 +70,7 @@
             <td>Pais: </td>
             <td>
                 <?php
-                    echo $user['country'];
+                    echo $property['country'];
                 ?>
             </td>
         </tr>
@@ -79,7 +79,7 @@
             <td>Idioma: </td>
             <td>
                 <?php
-                    echo $user['language'];
+                    echo $property['language'];
                 ?>
             </td>
         </tr>
@@ -88,7 +88,7 @@
             <td>Observaciones: </td>
             <td>
                 <?php
-                    echo $user['comment'];
+                    echo $property['comment'];
                 ?>
             </td>
         </tr>
@@ -97,11 +97,11 @@
             <td>Aficiones: </td>
             <td>
                 <?php
-                    echo $user['hobby'];
+                    echo $property['hobby'];
                 ?>
             </td>
         </tr>
     </table>
     </p>
-    <p><a href="index.php?page=controller_user&op=list">Volver</a></p>
+    <p><a href="index.php?page=controller_property&op=list">Volver</a></p>
 </div>

@@ -36,15 +36,15 @@ switch ($_GET['op']) {
         $check = true;
 
         if (isset($_POST['create'])) {
-            // $data = 'hola create post property';
+            // $data = 'Create post property OK';
             // die('<script>console.log('.json_encode( $data ) .');</script>');
             // die('<script>console.log('.json_encode( $_POST ) .');</script>');
 
             $check = validate();
-            //die('<script>console.log('.json_encode( $check ) .');</script>');
+            // die('<script>console.log('.json_encode( $check ) .');</script>'); It's true.
 
             if ($check) {
-                // die('<script>console.log('.json_encode( $_POST ) .');</script>');
+                // die('<script>console.log('.json_encode( $_POST ) .');</script>');List the data of the form OK.
                 try {
                     $daoproperty = new DAOproperty();
                     $rdo = $daoproperty->insert_property($_POST);

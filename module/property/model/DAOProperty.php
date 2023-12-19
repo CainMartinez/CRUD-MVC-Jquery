@@ -3,26 +3,23 @@
     
 	class DAOProperty{
 		function insert_property($datos){
-			die('<script>console.log('.json_encode( $datos ) .');</script>');
+			// die('<script>console.log('.json_encode( $datos ) .');</script>'); List the data of the form OK.
 
-			$property=$datos['usuario'];
-        	$passwd=$datos['pass'];
-        	$name=$datos['nombre'];
-        	$dni=$datos['DNI'];
-        	$sex=$datos['sexo'];
-        	$birthdate=$datos['fecha_nacimiento'];
-        	$age=$datos['edad'];
-        	$country=$datos['pais'];
-        	foreach ($datos['idioma'] as $indice) {
-        	    $language=$language."$indice:";
-        	}
-        	$comment=$datos['observaciones'];
-        	foreach ($datos['aficion'] as $indice) {
-        	    $hobby=$hobby."$indice:";
-        	}
-        	$sql = "INSERT INTO property(cadastral_reference,square_meters,property_type,number_of_rooms,comment,characteristics, date_publication,price) VALUES('$cadastral_reference','$square_meters','$property_type','$number_of_rooms','$comment','$characteristics','$date_publication','$price')";
+			$cadastral_reference = $datos['cadastral_reference'];
+			$square_meters = $datos['square_meters'];
+			$property_type = $datos['property_type'];
+			// $characteristics = "";
+        	// foreach ($datos['characteristics'] as $indice) {
+        	//     $characteristics=$characteristics."$indice:";
+        	// }
+			$characteristics = implode(",", $datos['characteristics']); //Alternativa al foreach.
+			$number_of_rooms = implode(",", $datos['number_of_rooms']);
+			$comment = $datos['comment'];
+			$date_publication = $datos['date_publication'];
+			$price = $datos['price'];
 
-			// die('<script>console.log('.json_encode( $sql ) .');</script>');
+			$sql = "INSERT INTO property(cadastral_reference,square_meters,property_type,number_of_rooms,comment,characteristics, date_publication,price) VALUES('$cadastral_reference','$square_meters','$property_type','$number_of_rooms','$comment','$characteristics','$date_publication','$price')";
+			// die('<script>console.log('.json_encode( $sql ) .');</script>'); Resultado de la consulta SQL OK y probada en phpmyadmin.
             $conexion = connect::con();
             $res = mysqli_query($conexion, $sql);
             connect::close($conexion);
@@ -41,9 +38,9 @@
 		}
 		
 		function select_property($property){
-			// $data = 'hola DAO select_property';
+			// $data = 'DAO select_property OK';
             // die('<script>console.log('.json_encode( $data ) .');</script>');
-			$sql = "SELECT * FROM usuario WHERE property='$property'";
+			$sql = "SELECT * FROM property WHERE cadastral_reference='$property'";
 			
 			$conexion = connect::con();
             $res = mysqli_query($conexion, $sql)->fetch_object();
@@ -53,25 +50,21 @@
 		
 		function update_property($datos){
 			//die('<script>console.log('.json_encode( $datos ) .');</script>');
-			$property=$datos['usuario'];
-        	$passwd=$datos['pass'];
-        	$name=$datos['nombre'];
-        	$dni=$datos['DNI'];
-        	$sex=$datos['sexo'];
-        	$birthdate=$datos['fecha_nacimiento'];
-        	$age=$datos['edad'];
-        	$country=$datos['pais'];
-        	foreach ($datos['idioma'] as $indice) {
-        	    $language=$language."$indice:";
+			$cadastral_reference = $datos['cadastral_reference'];
+			$square_meters = $datos['square_meters'];
+			$property_type = $datos['property_type'];
+			$characteristics = "";
+        	foreach ($datos['characteristics'] as $indice) {
+        	    $characteristics=$characteristics."$indice:";
         	}
-        	$comment=$datos['observaciones'];
-        	foreach ($datos['aficion'] as $indice) {
-        	    $hobby=$hobby."$indice:";
-        	}
+			// $characteristics = implode(":",$datos['characteristics']);
+			$number_of_rooms = $datos['number_of_rooms'];
+			$comment = $datos['comment'];
+			$date_publication = $datos['date_publication'];
+			$price = $datos['price'];
         	
-        	$sql = " UPDATE usuario SET pass='$passwd', name='$name', dni='$dni', sex='$sex', birthdate='$birthdate', age='$age',"
-        		. " country='$country', language='$language', comment='$comment', hobby='$hobby' WHERE property='$property'";
-            
+        	$sql = "UPDATE property SET square_meters='$square_meters', property_type='$property_type', characteristics='$characteristics', number_of_rooms='$number_of_rooms', comment='$comment', date_publication='$date_publication', price='$price' WHERE cadastral_reference='$cadastral_reference'";
+
             $conexion = connect::con();
             $res = mysqli_query($conexion, $sql);
             connect::close($conexion);

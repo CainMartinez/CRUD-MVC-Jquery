@@ -1,6 +1,6 @@
 <?php
-    function validate_nombre($nombre){
-        $sql = "SELECT * FROM usuario WHERE name='$nombre'";
+    function validate_cadastral_reference($cadastral_reference){
+        $sql = "SELECT * FROM property WHERE cadastral_reference='$cadastral_reference'";
 
         $conexion = connect::con();
         $res = mysqli_query($conexion, $sql)->fetch_object();
@@ -8,37 +8,18 @@
         return $res;
     }
 
-    function validate_dni($dni){
-        $sql = "SELECT * FROM usuario WHERE dni='$dni'";
-
-        $conexion = connect::con();
-        $res = mysqli_query($conexion, $sql);
-        $res = $res->num_rows;
-        connect::close($conexion);
-        return $res;
-    }
-    
     function validate() {
-        // $data = 'hola validate php';
+        // $data = 'Validate php OK';
         // die('<script>console.log('.json_encode( $data ) .');</script>');
 
         $check = true;
 
-        $nombre = $_POST['nombre'];
-        $dni = $_POST['DNI'];
-        $nombre = validate_nombre($nombre);
-        $dni = validate_dni($dni);
+        $cadastral_reference = $_POST['cadastral_reference'];
+        $cadastral_reference = validate_cadastral_reference($cadastral_reference);
 
-        if($nombre !== null){
+        if($cadastral_reference !== null){
             echo '<script language="javascript">setTimeout(() => {
-                toastr.error("El nombre no puede estar repetido");
-            }, 1000);</script>';
-            $check = false;
-        }
-
-        if($dni !== 0){;
-            echo '<script language="javascript">setTimeout(() => {
-                toastr.error("El DNI no puede estar repetido");
+                toastr.error("The cadastral reference number cannot be repeated.");
             }, 1000);</script>';
             $check = false;
         }

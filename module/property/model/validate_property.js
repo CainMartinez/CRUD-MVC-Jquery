@@ -81,13 +81,13 @@ function validate_price(texto) {
     return false;
 }
 function validate() {
-    // console.log('hola validate js');
+    // console.log('Validate js OK');
     // return false;
 
     var check = true;
 
     var v_cadastral_reference = document.getElementById('cadastral_reference').value;
-    // console.log(v_usuario);
+    // console.log(v_cadastral_reference);
     // return false;
     var v_square_meters = document.getElementById('square_meters').value;
     var v_property_type = document.getElementsByName('property_type');
@@ -99,7 +99,7 @@ function validate() {
 
 
     var r_cadastral_reference = validate_cadastral_reference(v_cadastral_reference);
-    // console.log(r_usuario);
+    // console.log(r_cadastral_referenc);
     // return false;
     var r_square_meters = validate_square_meters(v_square_meters);
     var r_property_type = validate_property_type(v_property_type);
@@ -110,57 +110,57 @@ function validate() {
     var r_price = validate_price(v_price);
 
     if (!r_cadastral_reference) {
-        document.getElementById('error_cadastral_reference').innerHTML = " * La referencia catastral introducida no es válida";
-        // console.log(r_usuario);
+        document.getElementById('error_cadastral_reference').innerHTML = " * The cadastral reference entered is not valid.";
+        // console.log(r_cadastral_reference);
         // return false;
         check = false;
     } else {
         document.getElementById('error_cadastral_reference').innerHTML = "";
     }
     if (!r_square_meters) {
-        document.getElementById('error_square_meters').innerHTML = " * Los metros cuadrados introducidos no son válidos";
+        document.getElementById('error_square_meters').innerHTML = " * The square meters entered are not valid.";
         check = false;
     } else {
         document.getElementById('error_square_meters').innerHTML = "";
     }
 
     if (!r_property_type) {
-        document.getElementById('error_property_type').innerHTML = " * No has seleccionado ningún tipo de propiedad";
+        document.getElementById('error_property_type').innerHTML = " * You have not selected any type of property.";
         check = false;
     } else {
         document.getElementById('error_property_type').innerHTML = "";
     }
 
     if (!r_characteristics) {
-        document.getElementById('error_characteristics').innerHTML = " * No has seleccionado ninguna característica";
+        document.getElementById('error_characteristics').innerHTML = " * You have not selected any characteristic.";
         check = false;
     } else {
         document.getElementById('error_characteristics').innerHTML = "";
     }
 
     if (!r_number_of_rooms) {
-        document.getElementById('error_number_of_rooms').innerHTML = " * No has seleccionado el número de habitaciones";
+        document.getElementById('error_number_of_rooms').innerHTML = " * You have not selected the number of rooms.";
         check = false;
     } else {
         document.getElementById('error_number_of_rooms').innerHTML = "";
     }
 
     if (!r_comment) {
-        document.getElementById('error_comment').innerHTML = " * El comentario introducido no es válido";
+        document.getElementById('error_comment').innerHTML = " * The comment entered is invalid.";
         check = false;
     } else {
         document.getElementById('error_comment').innerHTML = "";
     }
 
     if (!r_date_publication) {
-        document.getElementById('error_date_publication').innerHTML = " * No has introducido ninguna fecha de publicación";
+        document.getElementById('error_date_publication').innerHTML = " * You have not entered a publication date.";
         check = false;
     } else {
         document.getElementById('error_date_publication').innerHTML = "";
     }
 
     if (!r_price) {
-        document.getElementById('error_price').innerHTML = " * El precio introducido no es válido";
+        document.getElementById('error_price').innerHTML = " * The price entered is not valid.";
         check = false;
     } else {
         document.getElementById('error_price').innerHTML = "";

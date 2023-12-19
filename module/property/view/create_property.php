@@ -1,5 +1,5 @@
 <div id="contenido" class="form-container">
-    <form autocomplete="on" method="post" name="alta_user" id="alta_user" 
+    <form autocomplete="on" method="post" name="alta_property" id="alta_property" 
     onsubmit="return validate();" action="index.php?page=controller_property&op=create" > 
         <h1>New Property</h1>
         <table width="75%" border="0">
@@ -23,25 +23,24 @@
             <tr> 
                 <td>Property Type</td>
                 <td>
-                    <input type="radio" id="property_type" name="property_type" value="House" required>
+                    <input type="radio" id="house" name="property_type" value="House" required>
                     <label for="house">House</label><br>
-                    <input type="radio" id="property_type" name="property_type" value="Apartment">
+                    <input type="radio" id="apartment" name="property_type" value="Apartment">
                     <label for="apartment">Apartment</label><br>
-                    <input type="radio" id="property_type" name="property_type" value="Other">
+                    <input type="radio" id="other" name="property_type" value="Other">
                     <label for="other">Other</label>
                 </td>
             </tr>
             <tr> 
                 <td>Characteristics</td>
                 <td>
-                    
-                    <input type="checkbox" id="characteristics[]" name="characteristics[]" value="Balcony">
+                    <input type="checkbox" id="balcony" name="characteristics[]" value="Balcony">
                     <label for="balcony">Balcony</label><br>
-                    <input type="checkbox" id="characteristics[]" name="characteristics[]" value="Garage">
+                    <input type="checkbox" id="garage" name="characteristics[]" value="Garage">
                     <label for="garage">Garage</label><br>
-                    <input type="checkbox" id="characteristics[]" name="characteristics[]" value="Pool">
+                    <input type="checkbox" id="pool" name="characteristics[]" value="Pool">
                     <label for="pool">Pool</label><br>
-                    <input type="checkbox" id="characteristics[]" name="characteristics[]" value="Garden">
+                    <input type="checkbox" id="garden" name="characteristics[]" value="Garden">
                     <label for="garden">Garden</label><br>
                 </td>
             </tr>
