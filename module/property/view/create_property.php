@@ -10,7 +10,7 @@
                     <font color="red">
                         <span id="error_cadastral_reference" class="error">
                             <?php
-                                echo "$error_cadastral_reference";
+                                // echo "$error_cadastral_reference";
                             ?>
                         </span>
                     </font>
@@ -68,13 +68,9 @@
                 <td>Price</td>
                 <td><input type="text" name="price" id="price" pattern="[0-9]*" placeholder="Input the price..." required></td>
             </tr>
-            <tr> 
-                <td></td>
-                <td><input type="submit" name="Submit" value="Add"></td>
-            </tr>
             <tr>
-                <td><input type="submit" name="create" id="create"/></td>
-                <td align="right"><a href="index.php?page=controller_property&op=list">Volver</a></td>
+                <td><input type="submit" name="create" id="create" value="Add new"/></td>
+                <td align="right"><a href="index.php?page=controller_property&op=list">Back</a></td>
             </tr>
         </table>
     </form>
