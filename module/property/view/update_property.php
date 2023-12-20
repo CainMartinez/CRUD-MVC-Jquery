@@ -17,8 +17,81 @@
                     </font>
                 </td>
             </tr>
-            <!-- Haz algo similar para los demás campos -->
-            <!-- ... -->
+            <tr>
+                <td>Square Meters</td>
+                <td><input type="text" name="square_meters" id="square_meters" placeholder="Input the square meters..." pattern="\d*" value="<?php echo $property->getSquareMeters(); ?>"></td>
+                <td>
+                    <font color="red">
+                        <span id="error_square_meters" class="error">
+                        </span>
+                    </font>
+            </tr>
+            <tr>
+                <td>Property Type</td>
+                <td>
+                    <input type="radio" id="house" name="property_type" value="House" <?php if($property->getPropertyType() === 'House') echo 'checked'; ?>>
+                    <label for="house">House</label><br>
+                    <input type="radio" id="apartment" name="property_type" value="Apartment" <?php if($property->getPropertyType() === 'Apartment') echo 'checked'; ?>>
+                    <label for="apartment">Apartment</label><br>
+                    <input type="radio" id="other" name="property_type" value="Other" <?php if($property->getPropertyType() === 'Other') echo 'checked'; ?>>
+                    <label for="other">Other</label>
+                </td>
+                <td>
+                    <font color="red">
+                        <span id="error_property_type" class="error">
+                        </span>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td>Characteristics</td>
+                
+                <td>
+                    <input type="checkbox" id="balcony" name="characteristics[]" value="Balcony" <?php if(in_array('Balcony', $property->getCharacteristics())) echo 'checked'; ?>>
+                    <label for="balcony">Balcony</label><br>
+                    <input type="checkbox" id="garage" name="characteristics[]" value="Garage" <?php if(in_array('Garage', $property->getCharacteristics())) echo 'checked'; ?>>
+                    <label for="garage">Garage</label><br>
+                    <input type="checkbox" id="pool" name="characteristics[]" value="Pool" <?php if(in_array('Pool', $property->getCharacteristics())) echo 'checked'; ?>>
+                    <label for="pool">Pool</label><br>
+                    <input type="checkbox" id="garden" name="characteristics[]" value="Garden" <?php if(in_array('Garden', $property->getCharacteristics())) echo 'checked'; ?>>
+                    <label for="garden">Garden</label><br>
+                </td>
+                <td>
+                    <font color="red">
+                        <span id="error_characteristics" class="error">
+                        </span>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td>Number of Rooms</td>
+                <td>
+                    <select name="number_of_rooms" id="number_of_rooms">
+                        <option value="">Select number of rooms</option>
+                        <option value="1" <?php if($property->getNumberOfRooms() === '1') echo 'selected'; ?>>1</option>
+                        <option value="2" <?php if($property->getNumberOfRooms() === '2') echo 'selected'; ?>>2</option>
+                        <option value="3" <?php if($property->getNumberOfRooms() === '3') echo 'selected'; ?>>3</option>
+                        <option value="4" <?php if($property->getNumberOfRooms() === '4') echo 'selected'; ?>>4</option>
+                        <option value="5" <?php if($property->getNumberOfRooms() === '5') echo 'selected'; ?>>5</option>
+                    </select>
+                </td>
+                <td>
+                    <font color="red">
+                        <span id="error_number_of_rooms" class="error">
+                        </span>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="text" name="price" id="price" placeholder="Input the price..." pattern="\d*" value="<?php echo $property->getPrice(); ?>"></td>
+                <td>
+                    <font color="red">
+                        <span id="error_price" class="error">
+                        </span>
+                    </font>
+                </td>
+            </tr>
             <tr>
                 <td><input type="submit" name="update" id="update" value="Update"/></td>
                 <td align="right"><a class="backbutton" href="index.php?page=controller_property&op=list">Back</a></td>
@@ -26,7 +99,7 @@
         </table>
     </form>
 </div>
-<div id="contenido">
+<!-- <div id="contenido">
     <form autocomplete="on" method="post" name="aupdate_property" id="update_property" onsubmit="return validate();" action="index.php?page=controller_property&op=update">
         <h1>Modify Property</h1>
         <table border='0'>
@@ -35,9 +108,6 @@
                 <td><input type="text" id="usuario" name="usuario" placeholder="usuario" value="<?php echo $property['property'];?>" readonly/></td>
                 <td><font color="red">
                     <span id="error_usuario" class="error">
-                        <?php
-                            echo "$error_usuario";
-                        ?>
                     </span>
                 </font></font></td>
             </tr>
@@ -297,4 +367,4 @@
             </tr>
         </table>
     </form>
-</div>
+</div> -->
