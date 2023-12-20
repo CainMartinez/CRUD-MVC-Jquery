@@ -47,16 +47,11 @@ function validate_characteristics(array) {
         return false;
     }
 }
-
-function validate_number_of_rooms(array) {
-    var check = false;
-    for (var i = 0, l = array.options.length, o; i < l; i++) {
-        o = array.options[i];
-        if (o.selected) {
-            check = true;
-        }
+function validate_number_of_rooms(texto) {
+    if (texto !== "") {
+        return true;
     }
-    return check;
+    return false;
 }
 
 function validate_comment(texto) {
@@ -92,7 +87,7 @@ function validate() {
     var v_square_meters = document.getElementById('square_meters').value;
     var v_property_type = document.getElementsByName('property_type');
     var v_characteristics = document.getElementsByName('characteristics[]');
-    var v_number_of_rooms = document.getElementById('number_of_rooms[]');
+    var v_number_of_rooms = document.getElementById('number_of_rooms').value;
     var v_comment = document.getElementById('coment').value;
     var v_date_publication = document.getElementById('fecha').value;
     var v_price = document.getElementById('price').value;

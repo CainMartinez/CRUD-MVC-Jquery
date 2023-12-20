@@ -76,5 +76,5 @@
         </tr>
     </table>
     </p>
-    <p><a href="index.php?page=controller_property&op=list">Back</a></p>
+    <p><a class="backbutton" href="index.php?page=controller_property&op=list">Back</a></p>
 </div>

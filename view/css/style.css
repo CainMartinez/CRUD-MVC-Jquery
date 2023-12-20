@@ -17,7 +17,7 @@ h1 {
 }
 
 #wrapper {
-	width: 80%;
+	width: 95%;
 	margin: auto;
 	background-color: #FFFFFF;
 }
@@ -382,5 +382,19 @@ input[type="checkbox"]:checked + label:before {
 	border: 1px solid #ddd;
 	text-align: left;
 }
+.backbutton {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	background-color: #007BFF;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+}
 
-
+.backbutton:hover {
+	background-color: #0056b3;
+}

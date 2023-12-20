@@ -37,7 +37,7 @@
                         <span id="error_property_type" class="error">
                         </span>
                     </font>
-                </td>   
+                </td>
             </tr>
             <tr> 
                 <td>Characteristics</td>
@@ -58,10 +58,10 @@
                     </font>
                 </td>
             </tr>
-            <tr> 
+            <tr>
                 <td>Number of Rooms</td>
                 <td>
-                    <select name="number_of_rooms[]" id="number_of_rooms[]">
+                    <select name="number_of_rooms" id="number_of_rooms">
                         <option value="">Select number of rooms</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -107,17 +107,8 @@
             </tr>
             <tr>
                 <td><input type="submit" name="create" id="create" value="Add new"/></td>
-                <td align="right"><a href="index.php?page=controller_property&op=list">Back</a></td>
+                <td align="right"><a class="backbutton" href="index.php?page=controller_property&op=list">Back</a></td>
             </tr>
         </table>
     </form>
 </div>
-<script>
-    document.getElementById('alta_property').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var isValid = validate();
-        if (isValid) {
-            this.submit();
-        }
-    });
-</script>

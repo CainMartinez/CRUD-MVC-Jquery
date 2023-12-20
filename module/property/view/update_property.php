@@ -1,3 +1,31 @@
+<div id="contenido" class="form-container">
+    <form autocomplete="on" method="post" name="update_property" id="update_property" 
+    onsubmit="return validate();" action="index.php?page=controller_property&op=update" > 
+        <h1>Update Property</h1>
+        <table width="75%" border="0">
+            <!-- Aquí van todos los campos del formulario de creación -->
+            <!-- Recuerda cambiar los nombres de los campos y los ID si es necesario -->
+            <!-- También asegúrate de llenar los campos con los valores actuales de la propiedad -->
+            <!-- Por ejemplo, para el campo de referencia catastral, puedes hacer algo como esto: -->
+            <tr> 
+                <td>Cadastral Reference</td>
+                <td><input type="text" name="cadastral_reference" id="cadastral_reference" placeholder="Input the cadastral reference..." value="<?php echo $property->getCadastralReference(); ?>"></td>
+                <td>
+                    <font color="red">
+                        <span id="error_cadastral_reference" class="error">
+                        </span>
+                    </font>
+                </td>
+            </tr>
+            <!-- Haz algo similar para los demás campos -->
+            <!-- ... -->
+            <tr>
+                <td><input type="submit" name="update" id="update" value="Update"/></td>
+                <td align="right"><a class="backbutton" href="index.php?page=controller_property&op=list">Back</a></td>
+            </tr>
+        </table>
+    </form>
+</div>
 <div id="contenido">
     <form autocomplete="on" method="post" name="aupdate_property" id="update_property" onsubmit="return validate();" action="index.php?page=controller_property&op=update">
         <h1>Modify Property</h1>
@@ -265,7 +293,7 @@
             
             <tr>
                 <td><input type="submit" name="update" id="update"/></td>
-                <td align="right"><a href="index.php?page=controller_property&op=list">Volver</a></td>
+                <td align="right"><a class="backbutton" href="index.php?page=controller_property&op=list">Back</a></td>
             </tr>
         </table>
     </form>
