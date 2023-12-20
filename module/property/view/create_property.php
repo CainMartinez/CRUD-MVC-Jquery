@@ -69,6 +69,12 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
+                <td>
+                    <font color="red">
+                        <span id="error_number_of_rooms" class="error">
+                        </span>
+                    </font>
+                </td>
             <tr> 
                 <td>Comment</td>
                 <td><textarea name="comment" id="coment" rows="4" cols="50" placeholder="Input a commentary..."></textarea></td>
@@ -106,3 +112,12 @@
         </table>
     </form>
 </div>
+<script>
+    document.getElementById('alta_property').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var isValid = validate();
+        if (isValid) {
+            this.submit();
+        }
+    });
+</script>

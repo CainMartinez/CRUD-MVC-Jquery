@@ -4,28 +4,29 @@
 	class DAOProperty{
 		function insert_property($datos){
 			// die('<script>console.log('.json_encode( $datos ) .');</script>'); List the data of the form OK.
+			if (!isset($datos['cadastral_reference'], $datos['square_meters'], $datos['property_type'], $datos['number_of_rooms'], $datos['comment'], $datos['characteristics'], $datos['date_publication'], $datos['price'])) {
+				return false;
+			}else{
+				$cadastral_reference = $datos['cadastral_reference'];
+				$square_meters = $datos['square_meters'];
+				$property_type = isset($datos['property_type']) ? $datos['property_type'] : '';
+				$characteristics = isset($datos['characteristics']) ? (is_array($datos['characteristics']) ? implode(",", $datos['characteristics']) : $datos['characteristics']) : '';
+				// foreach ($datos['characteristics'] as $indice) {
+				//     $characteristics=$characteristics."$indice:";
+				// }
+				$number_of_rooms = implode(",", $datos['number_of_rooms']);
+				$comment = $datos['comment'];
+				$date_publication = $datos['date_publication'];
+				$price = $datos['price'];
 
-			$cadastral_reference = $datos['cadastral_reference'];
-			$square_meters = $datos['square_meters'];
-			$property_type = isset($datos['property_type']) ? $datos['property_type'] : '';
-			$characteristics = isset($datos['characteristics']) ? (is_array($datos['characteristics']) ? implode(",", $datos['characteristics']) : $datos['characteristics']) : '';
-        	// foreach ($datos['characteristics'] as $indice) {
-        	//     $characteristics=$characteristics."$indice:";
-        	// }
-			//Alternativa al foreach.
-			$number_of_rooms = implode(",", $datos['number_of_rooms']);
-			$comment = $datos['comment'];
-			$date_publication = $datos['date_publication'];
-			$price = $datos['price'];
-
-			$sql = "INSERT INTO property(cadastral_reference,square_meters,property_type,number_of_rooms,comment,characteristics, date_publication,price) VALUES('$cadastral_reference','$square_meters','$property_type','$number_of_rooms','$comment','$characteristics','$date_publication','$price')";
-			// die('<script>console.log('.json_encode( $sql ) .');</script>'); Resultado de la consulta SQL OK y probada en phpmyadmin.
-            $conexion = connect::con();
-            $res = mysqli_query($conexion, $sql);
-            connect::close($conexion);
-			return $res;
+				$sql = "INSERT INTO property(cadastral_reference,square_meters,property_type,number_of_rooms,comment,characteristics, date_publication,price) VALUES('$cadastral_reference','$square_meters','$property_type','$number_of_rooms','$comment','$characteristics','$date_publication','$price')";
+				// die('<script>console.log('.json_encode( $sql ) .');</script>'); Resultado de la consulta SQL OK y probada en phpmyadmin.
+				$conexion = connect::con();
+				$res = mysqli_query($conexion, $sql);
+				connect::close($conexion);
+				return $res;
+			}
 		}
-		
 		function select_all_property(){
 			// $data = 'DAO select_all_property OK';
             // die('<script>console.log('.json_encode( $data ) .');</script>');
