@@ -11,10 +11,7 @@
 				$square_meters = $datos['square_meters'];
 				$property_type = isset($datos['property_type']) ? $datos['property_type'] : '';
 				$characteristics = isset($datos['characteristics']) ? (is_array($datos['characteristics']) ? implode(",", $datos['characteristics']) : $datos['characteristics']) : '';
-				// foreach ($datos['characteristics'] as $indice) {
-				//     $characteristics=$characteristics."$indice:";
-				// }
-				$number_of_rooms = implode(",", $datos['number_of_rooms']);
+				$number_of_rooms = $datos['number_of_rooms'];
 				$comment = $datos['comment'];
 				$date_publication = $datos['date_publication'];
 				$price = $datos['price'];
@@ -50,13 +47,13 @@
 		}
 		
 		function update_property($datos){
-			//die('<script>console.log('.json_encode( $datos ) .');</script>');
+			// die('<script>console.log('.json_encode( $datos ) .');</script>');
 			
 			$cadastral_reference = $datos['cadastral_reference'];
 			$square_meters = $datos['square_meters'];
 			$property_type = $datos['property_type'];
-			$characteristics = implode(":", $datos['characteristics']);
-			$number_of_rooms = implode(",", $datos['number_of_rooms']);
+			$characteristics = implode(",", $datos['characteristics']);
+			$number_of_rooms = $datos['number_of_rooms'];
 			$comment = $datos['comment'];
 			$date_publication = $datos['date_publication'];
 			$price = $datos['price'];

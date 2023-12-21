@@ -71,21 +71,23 @@ switch ($_GET['op']) {
         break;
 
     case 'update';
+    // $data = 'Update property OK';
+    // die('<script>console.log('.json_encode( $data ) .');</script>');
         include("module/property/model/validate.php");
         $check = true;
 
         if (isset($_POST['update'])) {
-            // $data = 'hola update post property';
+            // $data = 'Update post property OK';
             // die('<script>console.log('.json_encode( $data ) .');</script>');
             $check = validate();
-            //die('<script>console.log('.json_encode( $check ) .');</script>');
+            // die('<script>console.log('.json_encode( $check ) .');</script>');
 
             if ($check) {
-                //die('<script>console.log('.json_encode( $_POST ) .');</script>');
+                // die('<script>console.log('.json_encode( $_POST ) .');</script>');
                 try {
                     $daoproperty = new DAOproperty();
                     $rdo = $daoproperty->update_property($_POST);
-                    //die('<script>console.log('.json_encode( $rdo ) .');</script>');
+                    // die('<script>console.log('.json_encode( $rdo ) .');</script>');
                 } catch (Exception $e) {
                     $callback = 'index.php?page=503';
                     die('<script>window.location.href="' . $callback . '";</script>');
@@ -95,9 +97,9 @@ switch ($_GET['op']) {
                     echo '<script language="javascript">setTimeout(() => {
                             toastr.success("Record modified correctly in the database.");
                         }, 1000);</script>';
-                    echo '<script language="javascript">setTimeout(() => {
-                            window.location.href="index.php?page=controller_property&op=list";
-                        }, 2000);</script>';
+                    // echo '<script language="javascript">setTimeout(() => {
+                    //         window.location.href="index.php?page=controller_property&op=list";
+                    //     }, 2000);</script>';
                 } else {
                     $callback = 'index.php?page=503';
                     die('<script>window.location.href="' . $callback . '";</script>');
@@ -113,6 +115,7 @@ switch ($_GET['op']) {
             $daoproperty = new DAOproperty();
             $rdo = $daoproperty->select_property($_GET['id']);
             $property = get_object_vars($rdo);
+            // die('<script>console.log('.json_encode( $property ) .');</script>');
         } catch (Exception $e) {
             $callback = 'index.php?page=503';
             die('<script>window.location.href="' . $callback . '";</script>');
@@ -127,7 +130,7 @@ switch ($_GET['op']) {
         break;
 
     case 'read';
-        // $data = 'hola crtl property read';
+        // $data = 'Property read OK';
         // die('<script>console.log('.json_encode( $data ) .');</script>');
         // die('<script>console.log('.json_encode( $_GET['id'] ) .');</script>');
 
@@ -149,7 +152,7 @@ switch ($_GET['op']) {
         break;
 
     case 'delete';
-        // $data = 'hola crtl property delete';
+        // $data = 'Property delete OK';
         // die('<script>console.log('.json_encode( $data ) .');</script>');
         // die('<script>console.log('.json_encode( $_GET['id'] ) .');</script>');
 
