@@ -87,7 +87,9 @@ switch ($_GET['op']) {
                 try {
                     $daoproperty = new DAOproperty();
                     $rdo = $daoproperty->update_property($_POST);
-                    // die('<script>console.log('.json_encode( $rdo ) .');</script>');
+                    // die('<script>console.log('.json_encode( $rdo ) .');</script>'); Resultado es true. Query correcta.
+                    // die('<script>console.log('.json_encode( $_GET['id'] ) .');</script>');
+
                 } catch (Exception $e) {
                     $callback = 'index.php?page=503';
                     die('<script>window.location.href="' . $callback . '";</script>');
@@ -105,16 +107,19 @@ switch ($_GET['op']) {
                     die('<script>window.location.href="' . $callback . '";</script>');
                 }
             } else {
-                echo '<script language="javascript">setTimeout(() => {
-                        window.location.href="index.php?page=controller_property&op=list";
-                    }, 2000);</script>';
+                // echo '<script language="javascript">setTimeout(() => {
+                //         window.location.href="index.php?page=controller_property&op=list";
+                //     }, 2000);</script>';
             }
         }
 
         try {
             $daoproperty = new DAOproperty();
+            // die('<script>console.log('.json_encode( $_GET['id'] ) .');</script>');
+
             $rdo = $daoproperty->select_property($_GET['id']);
-            $property = get_object_vars($rdo);
+            // $rdo = $daoproperty->select_property($_GET['cadastral_reference']); Undefined array key, ID o cadastral_reference.
+            $property = get_object_vars($rdo); //Uncaught TypeError: get_object_vars() is NULL.
             // die('<script>console.log('.json_encode( $property ) .');</script>');
         } catch (Exception $e) {
             $callback = 'index.php?page=503';

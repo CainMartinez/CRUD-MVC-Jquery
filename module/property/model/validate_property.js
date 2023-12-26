@@ -82,8 +82,8 @@ function validate() {
     var check = true;
 
     var v_cadastral_reference = document.getElementById('cadastral_reference').value;
-    console.log(v_cadastral_reference);
-    return false;
+    // console.log(v_cadastral_reference);
+    // return false;
     var v_square_meters = document.getElementById('square_meters').value;
     var v_property_type = document.getElementsByName('property_type');
     var v_characteristics = document.getElementsByName('characteristics[]');

@@ -63,7 +63,9 @@
 			$conexion = connect::con();
 			$res = mysqli_query($conexion, $sql);
 			connect::close($conexion);
+			// die('<script>console.log('.json_encode( $res ) .');</script>');
 			return $res;
+			
 		
 		}
 		

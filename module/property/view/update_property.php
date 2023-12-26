@@ -136,6 +136,8 @@
                     </font>
                 </td>
             </tr>
+            <input type="hidden" name="id" value="<?php echo $property['id']; ?>">
+
             <tr>
                 <td><input type="submit" name="update" id="update" value="Update"/></td>
                 <td align="right"><a class="backbutton" href="index.php?page=controller_property&op=list">Back</a></td>
