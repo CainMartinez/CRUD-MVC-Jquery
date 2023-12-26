@@ -1,8 +1,7 @@
 <div id="contenido" class="form-container">
-    <form autocomplete="on" method="post" name="act_property" id="act_property" 
-    onsubmit="return validate();" action="index.php?page=controller_property&op=update" > 
-        <h1>Update Property</h1>
-        <table width="75%" border="0">
+    <form autocomplete="on" method="post" name="updateForm" id="updateForm" 
+    onsubmit="return validate();" action="index.php?page=controller_property&op=update">
+    <table width="75%" border="0">
             <tr> 
                 <td>Cadastral Reference</td>
                 <td><input type="text" name="cadastral_reference" id="cadastral_reference" value="<?php echo $property['cadastral_reference'];?>"></td>
