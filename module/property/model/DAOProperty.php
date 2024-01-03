@@ -45,10 +45,8 @@
             connect::close($conexion);
             return $res;
 		}
-		
 		function update_property($datos){
 			// die('<script>console.log('.json_encode( $datos ) .');</script>');
-			$cadastral_reference_old = $datos['cadastral_reference_old'];
 			$cadastral_reference = $datos['cadastral_reference'];
 			$square_meters = $datos['square_meters'];
 			$property_type = $datos['property_type'];
@@ -62,13 +60,14 @@
 
 			$conexion = connect::con();
 			$res = mysqli_query($conexion, $sql);
-			connect::close($conexion);
+
+			// if (!$res) {
+			// 	die('Error en la consulta: ' . mysqli_error($conexion));
+			// }
 			// die('<script>console.log('.json_encode( $res ) .');</script>');
+			connect::close($conexion);
 			return $res;
-			
-		
 		}
-		
 		function delete_property($property){
 			$sql = "DELETE FROM property WHERE cadastral_reference='$property'";
 			

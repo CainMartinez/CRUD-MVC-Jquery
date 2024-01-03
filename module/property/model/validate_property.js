@@ -176,6 +176,9 @@ function validate(op) {
     } else {
         document.getElementById('error_price').innerHTML = "";
     }
+    // document.getElementById('cadastral_reference').addEventListener('input', function() {
+    //     document.getElementById('updateForm').action = 'index.php?page=controller_property&op=update&id=' + encodeURIComponent(this.value);
+    // });
 
     //return check;
     if (check){

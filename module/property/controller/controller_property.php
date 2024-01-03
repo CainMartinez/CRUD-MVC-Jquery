@@ -97,6 +97,7 @@ switch ($_GET['op']) {
                 }
 
                 if ($rdo) {
+                    var_dump($_POST);
                     echo '<script language="javascript">setTimeout(() => {
                             toastr.success("Record modified correctly in the database.");
                         }, 1000);</script>';
