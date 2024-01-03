@@ -45,8 +45,10 @@
             connect::close($conexion);
             return $res;
 		}
+		
 		function update_property($datos){
 			// die('<script>console.log('.json_encode( $datos ) .');</script>');
+			$cadastral_reference_old = $datos['cadastral_reference_old'];
 			$cadastral_reference = $datos['cadastral_reference'];
 			$square_meters = $datos['square_meters'];
 			$property_type = $datos['property_type'];
@@ -56,18 +58,18 @@
 			$date_publication = $datos['date_publication'];
 			$price = $datos['price'];
 
-			$sql = "UPDATE property SET cadastral_reference='$cadastral_reference', square_meters='$square_meters', property_type='$property_type', characteristics='$characteristics', number_of_rooms='$number_of_rooms', comment='$comment', date_publication='$date_publication', price='$price' WHERE cadastral_reference='$cadastral_reference_old'";
+			$sql = "UPDATE property SET cadastral_reference='$cadastral_reference', square_meters='$square_meters', property_type='$property_type', characteristics='$characteristics',
+			number_of_rooms='$number_of_rooms', comment='$comment', date_publication='$date_publication', price='$price' WHERE cadastral_reference='$cadastral_reference_old'";
 
 			$conexion = connect::con();
 			$res = mysqli_query($conexion, $sql);
-
-			// if (!$res) {
-			// 	die('Error en la consulta: ' . mysqli_error($conexion));
-			// }
-			// die('<script>console.log('.json_encode( $res ) .');</script>');
 			connect::close($conexion);
+			// die('<script>console.log('.json_encode( $res ) .');</script>');
 			return $res;
+			
+		
 		}
+		
 		function delete_property($property){
 			$sql = "DELETE FROM property WHERE cadastral_reference='$property'";
 			

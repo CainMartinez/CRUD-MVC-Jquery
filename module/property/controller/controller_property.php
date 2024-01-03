@@ -91,13 +91,11 @@ switch ($_GET['op']) {
                     // die('<script>console.log('.json_encode( $_GET['id'] ) .');</script>');
 
                 } catch (Exception $e) {
-                    // $callback = 'index.php?page=503';
-                    // die('<script>window.location.href="' . $callback . '";</script>');
-                    echo "Error!";
+                    $callback = 'index.php?page=503';
+                    die('<script>window.location.href="' . $callback . '";</script>');
                 }
 
                 if ($rdo) {
-                    var_dump($_POST);
                     echo '<script language="javascript">setTimeout(() => {
                             toastr.success("Record modified correctly in the database.");
                         }, 1000);</script>';
@@ -125,8 +123,8 @@ switch ($_GET['op']) {
             die('<script>window.location.href="' . $callback . '";</script>');
         }
         if (!$rdo) {
-            // $callback = 'index.php?page=503';
-            // die('<script>window.location.href="' . $callback . '";</script>');
+            $callback = 'index.php?page=503';
+            die('<script>window.location.href="' . $callback . '";</script>');
 
         } else {
             include("module/property/view/update_property.php");

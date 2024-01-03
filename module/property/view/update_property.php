@@ -1,16 +1,9 @@
 <div id="contenido" class="form-container">
-<<<<<<< HEAD
     <form autocomplete="on" method="post" name="update_property" id="update_property"> 
         <h1>Update Property</h1>
         <table width="75%" border="0">
         <input type="hidden" name="id" value=<?php echo $_GET['id'];?>>
         <input type="hidden" name="cadastral_reference_old" value="<?php echo isset($property['cadastral_reference']) ? $property['cadastral_reference'] : ''; ?>">            <tr> 
-=======
-    <form autocomplete="on" method="post" name="updateForm" id="updateForm" 
-    onsubmit="return validate();" action="index.php?page=controller_property&op=update">
-    <table width="75%" border="0">
-            <tr> 
->>>>>>> 67f8a43f3ad744f7f0f3582061b9ba3fbc344407
                 <td>Cadastral Reference</td>
                 <td><input type="text" name="cadastral_reference" id="cadastral_reference" value="<?php echo ($property !== null && isset($property['cadastral_reference'])) ? $property['cadastral_reference'] : ''; ?>"></td>
                 <td>
@@ -142,21 +135,12 @@
                     </font>
                 </td>
             </tr>
-<<<<<<< HEAD
 
-=======
->>>>>>> 67f8a43f3ad744f7f0f3582061b9ba3fbc344407
             <tr>
                 <td></td>
                 <td><input type="button" name="Sumbit" onclick="validate('update')" value="Update"/></td>
                 <td align="right"><a class="backbutton" href="index.php?page=controller_property&op=list">Back</a></td>
             </tr>
-<<<<<<< HEAD
             </table>
             </form>
             </div>
-=======
-        </table>
-    </form>
-</div>
->>>>>>> 67f8a43f3ad744f7f0f3582061b9ba3fbc344407
