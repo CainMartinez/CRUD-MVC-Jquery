@@ -48,7 +48,7 @@
 		
 		function update_property($datos){
 			// die('<script>console.log('.json_encode( $datos ) .');</script>');
-			
+			$cadastral_reference_old = $datos['cadastral_reference_old'];
 			$cadastral_reference = $datos['cadastral_reference'];
 			$square_meters = $datos['square_meters'];
 			$property_type = $datos['property_type'];
@@ -58,7 +58,7 @@
 			$date_publication = $datos['date_publication'];
 			$price = $datos['price'];
 
-			$sql = "UPDATE property SET square_meters='$square_meters', property_type='$property_type', characteristics='$characteristics', number_of_rooms='$number_of_rooms', comment='$comment', date_publication='$date_publication', price='$price' WHERE cadastral_reference='$cadastral_reference'";
+			$sql = "UPDATE property SET cadastral_reference='$cadastral_reference', square_meters='$square_meters', property_type='$property_type', characteristics='$characteristics', number_of_rooms='$number_of_rooms', comment='$comment', date_publication='$date_publication', price='$price' WHERE cadastral_reference='$cadastral_reference_old'";
 
 			$conexion = connect::con();
 			$res = mysqli_query($conexion, $sql);

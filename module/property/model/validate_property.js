@@ -75,22 +75,38 @@ function validate_price(texto) {
     }
     return false;
 }
-function validate() {
+function validate(op) {
     // console.log('Validate js OK');
-    // return false;
+    // return true;
 
     var check = true;
 
     var v_cadastral_reference = document.getElementById('cadastral_reference').value;
     // console.log(v_cadastral_reference);
     // return false;
+    var v_cadastral_reference = document.getElementById('cadastral_reference').value;
+    console.log('v_cadastral_reference:', v_cadastral_reference);
+
     var v_square_meters = document.getElementById('square_meters').value;
+    console.log('v_square_meters:', v_square_meters);
+
     var v_property_type = document.getElementsByName('property_type');
+    console.log('v_property_type:', v_property_type);
+
     var v_characteristics = document.getElementsByName('characteristics[]');
-    var v_number_of_rooms = document.getElementById('number_of_rooms').value;
-    var v_comment = document.getElementById('coment').value;
-    var v_date_publication = document.getElementById('fecha').value;
+    console.log('v_characteristics:', v_characteristics);
+
+    
+
     var v_price = document.getElementById('price').value;
+    console.log('v_price:', v_price);
+    var v_number_of_rooms = document.getElementById('number_of_rooms').value;
+    console.log('v_number_of_rooms:', v_number_of_rooms);
+    var v_comment = document.getElementById('comment').value;
+    console.log('v_comment:', v_comment);
+    var v_date_publication = document.getElementById('date_publication').value;
+    console.log('v_date_publication:', v_date_publication);
+
 
 
     var r_cadastral_reference = validate_cadastral_reference(v_cadastral_reference);
@@ -161,5 +177,21 @@ function validate() {
         document.getElementById('error_price').innerHTML = "";
     }
 
-    return check;
+    //return check;
+    if (check){
+        // console.log('Check true OK');
+        // return true;
+        if (op == 'create'){
+            // console.log('create js OK');
+            // return true;
+            document.getElementById('alta_property').submit();
+            document.getElementById('alta_property').action = "index.php?page=controller_property&op=create";
+        }
+        if (op == 'update'){
+            // console.log('update js OK');
+            // return true;
+            document.getElementById('update_property').submit();
+            document.getElementById('update_property').action = "index.php?page=controller_property&op=update";
+        }
+    }
 }

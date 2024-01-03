@@ -35,7 +35,7 @@ switch ($_GET['op']) {
         $rdo = "";
         $check = true;
 
-        if (isset($_POST['create'])) {
+        if ($_POST) {
             // $data = 'Create post property OK';
             // die('<script>console.log('.json_encode( $data ) .');</script>');
             // die('<script>console.log('.json_encode( $_POST ) .');</script>');
@@ -76,10 +76,10 @@ switch ($_GET['op']) {
         include("module/property/model/validate.php");
         $check = true;
 
-        if (isset($_POST['update'])) {
+        if ($_POST) {
             // $data = 'Update post property OK';
             // die('<script>console.log('.json_encode( $data ) .');</script>');
-            $check = validate();
+            $check = validate_update();
             // die('<script>console.log('.json_encode( $check ) .');</script>');
 
             if ($check) {
@@ -87,48 +87,46 @@ switch ($_GET['op']) {
                 try {
                     $daoproperty = new DAOproperty();
                     $rdo = $daoproperty->update_property($_POST);
-                    // die('<script>console.log('.json_encode( $rdo ) .');</script>'); Resultado es true. Query correcta.
+                    // die('<script>console.log('.json_encode( $rdo ) .');</script>'); //Resultado es true. Query correcta.
                     // die('<script>console.log('.json_encode( $_GET['id'] ) .');</script>');
 
                 } catch (Exception $e) {
-                    $callback = 'index.php?page=503';
-                    die('<script>window.location.href="' . $callback . '";</script>');
+                    // $callback = 'index.php?page=503';
+                    // die('<script>window.location.href="' . $callback . '";</script>');
+                    echo "Error!";
                 }
 
                 if ($rdo) {
                     echo '<script language="javascript">setTimeout(() => {
                             toastr.success("Record modified correctly in the database.");
                         }, 1000);</script>';
-                    // echo '<script language="javascript">setTimeout(() => {
-                    //         window.location.href="index.php?page=controller_property&op=list";
-                    //     }, 2000);</script>';
+                    echo '<script language="javascript">setTimeout(() => {
+                            window.location.href="index.php?page=controller_property&op=list";
+                        }, 2000);</script>';
                 } else {
                     $callback = 'index.php?page=503';
                     die('<script>window.location.href="' . $callback . '";</script>');
                 }
-            } else {
-                // echo '<script language="javascript">setTimeout(() => {
-                //         window.location.href="index.php?page=controller_property&op=list";
-                //     }, 2000);</script>';
             }
         }
 
         try {
             $daoproperty = new DAOproperty();
-            // die('<script>console.log('.json_encode( $_GET['id'] ) .');</script>');
-
             $rdo = $daoproperty->select_property($_GET['id']);
-            // $rdo = $daoproperty->select_property($_GET['cadastral_reference']); Undefined array key, ID o cadastral_reference.
-            $property = get_object_vars($rdo); //Uncaught TypeError: get_object_vars() is NULL.
+            // die('<script>console.log('.json_encode( $rdo ) .');</script>');
+            if ($rdo) {
+                $property = get_object_vars($rdo);
+            }
             // die('<script>console.log('.json_encode( $property ) .');</script>');
+            
         } catch (Exception $e) {
             $callback = 'index.php?page=503';
             die('<script>window.location.href="' . $callback . '";</script>');
         }
-
         if (!$rdo) {
-            $callback = 'index.php?page=503';
-            die('<script>window.location.href="' . $callback . '";</script>');
+            // $callback = 'index.php?page=503';
+            // die('<script>window.location.href="' . $callback . '";</script>');
+
         } else {
             include("module/property/view/update_property.php");
         }

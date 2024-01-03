@@ -1,6 +1,5 @@
 <div id="contenido" class="form-container">
-    <form autocomplete="on" method="post" name="alta_property" id="alta_property" 
-    onsubmit="return validate();" action="index.php?page=controller_property&op=create" > 
+    <form autocomplete="on" method="post" name="alta_property" id="alta_property"> 
         <h1>New Property</h1>
         <table width="75%" border="0">
             <tr> 
@@ -106,7 +105,7 @@
                 </td>
             </tr>
             <tr>
-                <td><input type="submit" name="create" id="create" value="Add new"/></td>
+                <td><input type="button" name="Submit" onclick="validate('create')" value="Add new"/></td>
                 <td align="right"><a class="backbutton" href="index.php?page=controller_property&op=list">Back</a></td>
             </tr>
         </table>

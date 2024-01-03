@@ -1,5 +1,9 @@
 <?php
-    $page = isset($_GET['page']) ? $_GET['page'] : 'homepage';
+	if (isset($_GET['page'])) {
+		$page = $_GET['page'];
+	} else {
+		$page = 'homepage';
+	}
 	switch($page){
 		case "homepage";
 			include("module/inicio/view/inicio.php");
