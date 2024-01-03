@@ -76,7 +76,7 @@
                 </td>
             <tr> 
                 <td>Comment</td>
-                <td><textarea name="comment" id="coment" rows="4" cols="50" placeholder="Input a commentary..."></textarea></td>
+                <td><textarea name="comment" id="comment" rows="4" cols="50" placeholder="Input a commentary..."></textarea></td>
                 <td>
                     <font color="red">
                         <span id="error_comment" class="error">
@@ -86,7 +86,7 @@
             </tr>
             <tr> 
                 <td>Date of publication</td>
-                <td><input type="text" name="date_publication" id="fecha" placeholder="Input the date..."></td>
+                <td><input type="text" name="date_publication" id="date_publication" placeholder="Input the date..."></td>
                 <td>
                     <font color="red">
                         <span id="error_date_publication" class="error">

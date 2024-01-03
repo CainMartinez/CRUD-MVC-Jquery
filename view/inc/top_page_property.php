@@ -9,7 +9,7 @@
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
     	<script type="text/javascript">
         	$(function() {
-        		$('#fecha').datepicker({
+        		$('#date_publication').datepicker({
         			dateFormat: 'dd/mm/yy', 
         			changeMonth: true, 
         			changeYear: true, 
