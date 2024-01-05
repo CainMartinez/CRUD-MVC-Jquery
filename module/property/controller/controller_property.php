@@ -97,11 +97,12 @@ switch ($_GET['op']) {
 
                 if ($rdo) {
                     echo '<script language="javascript">setTimeout(() => {
-                            toastr.success("Record modified correctly in the database.");
-                        }, 1000);</script>';
+                        alert("Record modified correctly in the database.");
+                        }, 0);</script>';
                     echo '<script language="javascript">setTimeout(() => {
                             window.location.href="index.php?page=controller_property&op=list";
-                        }, 2000);</script>';
+                        }, 0);</script>';
+                        
                 } else {
                     $callback = 'index.php?page=503';
                     die('<script>window.location.href="' . $callback . '";</script>');
@@ -122,13 +123,9 @@ switch ($_GET['op']) {
             $callback = 'index.php?page=503';
             die('<script>window.location.href="' . $callback . '";</script>');
         }
-        if (!$rdo) {
-            $callback = 'index.php?page=503';
-            die('<script>window.location.href="' . $callback . '";</script>');
-
-        } else {
+        if ($rdo) {
             include("module/property/view/update_property.php");
-        }
+        } 
         break;
 
     case 'read';
@@ -158,11 +155,12 @@ switch ($_GET['op']) {
         // die('<script>console.log('.json_encode( $data ) .');</script>');
         // die('<script>console.log('.json_encode( $_GET['id'] ) .');</script>');
 
-        if (isset($_POST['delete'])) {
+        if ($_POST) {
             //die('<script>console.log('.json_encode( $_GET['id'] ) .');</script>');
             try {
                 $daoproperty = new DAOproperty();
                 $rdo = $daoproperty->delete_property($_GET['id']);
+                
             } catch (Exception $e) {
                 $callback = 'index.php?page=503';
                 die('<script>window.location.href="' . $callback . '";</script>');
@@ -179,8 +177,71 @@ switch ($_GET['op']) {
                 die('<script>window.location.href="' . $callback . '";</script>');
             }
         }
+        try {
+            $daoproperty = new DAOproperty();
+            $rdo = $daoproperty->select_property($_GET['id']);
+            // die('<script>console.log('.json_encode( $rdo ) .');</script>');
+            if ($rdo) {
+                $property = get_object_vars($rdo);
+            }
+            // die('<script>console.log('.json_encode( $property ) .');</script>');
+            
+        } catch (Exception $e) {
+            $callback = 'index.php?page=503';
+            die('<script>window.location.href="' . $callback . '";</script>');
+        }
         include("module/property/view/delete_property.php");
         break;
+        case 'delete_all';
+        
+        if ($_POST){
+            try{
+                $dao_property = new DAOProperty();
+                $rdo = $dao_property -> delete_all_property();
+            }catch (Exception $e){
+                $callback = 'index.php?page=controller_property&op=503';
+                die('<script>window.location.href="'.$callback .'";</script>');
+            }
+            
+            if($rdo){
+                echo '<script language="javascript">setTimeout(() => {
+                    toastr.success("List of properties deleted correctly.");
+                }, 1000);</script>';
+                $callback = 'index.php?page=controller_property&op=list';
+                die('<script>window.location.href="'.$callback .'";</script>');
+            }else{
+                $callback = 'index.php?page=controller_property&op=503';
+                die('<script>window.location.href="'.$callback .'";</script>');
+            }
+        }
+        
+        include("module/property/view/delete_all_property.php");
+    break;
+
+    case 'dummies';
+        if ($_POST){
+            try{
+                $dao_property = new DAOProperty();
+                $rdo = $dao_property -> dummies_property();
+            }catch (Exception $e){
+                $callback = 'index.php?page=controller_property&op=503';
+                die('<script>window.location.href="'.$callback .'";</script>');
+            }
+
+            if($rdo){
+                echo '<script language="javascript">setTimeout(() => {
+                    toastr.success("Dummies added correctly.");
+                }, 1000);</script>';
+                $callback = 'index.php?page=controller_property&op=list';
+                die('<script>window.location.href="'.$callback .'";</script>');
+            }else{
+                $callback = 'index.php?page=controller_property&op=503';
+                die('<script>window.location.href="'.$callback .'";</script>');
+            }
+        }
+        
+        include("module/property/view/dummies_property.php");
+    break;
     default;
         include("view/inc/error404.php");
         break;

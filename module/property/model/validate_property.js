@@ -198,3 +198,17 @@ function validate(op) {
         }
     }
 }
+function operations_property(op){
+    if (op == 'delete'){
+        document.getElementById('delete_property').submit();
+        document.getElementById('delete_property').action = "index.php?page=controller_property&op=delete";
+    }
+    if (op == 'delete_all'){
+        document.getElementById('delete_all_property').submit();
+        document.getElementById('delete_all_property').action = "index.php?page=controller_property&op=delete_all";
+    }
+    if (op == 'dummies'){
+        document.getElementById('dummies_property').submit();
+        document.getElementById('dummies_property').action = "index.php?page=controller_property&op=dummies";
+    }
+}

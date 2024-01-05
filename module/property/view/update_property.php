@@ -2,8 +2,8 @@
     <form autocomplete="on" method="post" name="update_property" id="update_property"> 
         <h1>Update Property</h1>
         <table width="75%" border="0">
-        <input type="hidden" name="id" value=<?php echo $_GET['id'];?>>
-        <input type="hidden" name="cadastral_reference_old" value="<?php echo isset($property['cadastral_reference']) ? $property['cadastral_reference'] : ''; ?>">            <tr> 
+        <input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
+        <input type="hidden" name="cadastral_reference_old" value="<?php echo isset($property['cadastral_reference']) ? $property['cadastral_reference'] : ''; ?>">
                 <td>Cadastral Reference</td>
                 <td><input type="text" name="cadastral_reference" id="cadastral_reference" value="<?php echo ($property !== null && isset($property['cadastral_reference'])) ? $property['cadastral_reference'] : ''; ?>"></td>
                 <td>
@@ -138,7 +138,7 @@
 
             <tr>
                 <td></td>
-                <td><input type="button" name="Sumbit" onclick="validate('update')" value="Update"/></td>
+                <td><input type="button" name="Sumbit" onclick="validate('update')" value="Update" class="styled-button styled-button-green"/></td>
                 <td align="right"><a class="backbutton" href="index.php?page=controller_property&op=list">Back</a></td>
             </tr>
             </table>

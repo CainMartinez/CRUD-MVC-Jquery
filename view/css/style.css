@@ -10,8 +10,8 @@ body {
 	background-image: url(../img/background.png);
 	background-attachment: fixed;
 	background-repeat: no-repeat;
+	font-family: sans-serif;
 }
-
 h1 {
 	font-size: 32pt;
 }
@@ -28,7 +28,7 @@ h1 {
 	background-repeat: no-repeat;
 	height: 120px;
 }
-
+/* 
 #menu {
 	background-image: url(../img/menu.png);
 	height: 25px;
@@ -46,18 +46,18 @@ h1 {
 #menu a:hover,
 #footer a:hover {
 	text-decoration: underline;
-}
+} */
 
 #contenido {
 	padding: 20px;
 }
 
-#footer {
+/* #footer {
 	background-image: url(../img/menu.png);
 	height: 25px;
 	padding-top: 5px;
 	text-align: center;
-}
+} */
 
 .Button_green {
 	background-color: green;
@@ -260,7 +260,33 @@ h1 {
     font-size: 2em;
     margin-bottom: 10px;
 }
+#menu, #footer {
+	background-color: cyan;
+	overflow: hidden;
+	text-align: center;
+}
 
+#menu a, #footer a {
+	float: none;
+	display: inline-block;
+	color: black;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px; /* Increase font size */
+	
+}
+
+#menu a:hover, #footer a:hover {
+	background-color: lightcyan;
+	color: black;
+}
+
+@media screen and (max-width: 600px) {
+	#menu a, #footer a {
+		display: block;
+		text-align: left;
+	}
+}
 .title-row p {
     color: #666;
     font-size: 1.2em;
@@ -277,14 +303,14 @@ h1 {
 .add-button {
     display: inline-block;
     font-size: 3em;
-    color: green;
+    color: greenyellow;
     text-decoration: none;
 	font-weight: bolder;
 	margin: 10px;
 }
 
 .add-button:hover {
-    color: lightblue;
+    color: green;
 }
 img {
 	max-width: 100%;

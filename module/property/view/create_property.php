@@ -105,7 +105,7 @@
                 </td>
             </tr>
             <tr>
-                <td><input type="button" name="Submit" onclick="validate('create')" value="Add new"/></td>
+                <td><input type="button" class="styled-button styled-button-green" name="Submit" onclick="validate('create')" value="Add new"/></td>
                 <td align="right"><a class="backbutton" href="index.php?page=controller_property&op=list">Back</a></td>
             </tr>
         </table>

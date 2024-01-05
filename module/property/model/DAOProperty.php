@@ -70,12 +70,42 @@
 		
 		}
 		
-		function delete_property($property){
-			$sql = "DELETE FROM property WHERE cadastral_reference='$property'";
+		function delete_property($cadastral_reference){
+			$sql = "DELETE FROM property WHERE cadastral_reference='$cadastral_reference'";
 			
 			$conexion = connect::con();
             $res = mysqli_query($conexion, $sql);
             connect::close($conexion);
             return $res;
+		}
+		function delete_all_property(){
+			$sql = "DELETE FROM property";
+			
+			$conexion = connect::con();
+			$res = mysqli_query($conexion, $sql);
+			connect::close($conexion);
+			return $res;
+		}
+		function dummies_property(){
+			$sql = "DELETE FROM property;";
+
+			$sql .= "INSERT INTO property (cadastral_reference, square_meters, property_type, number_of_rooms, comment, characteristics, date_publication, price) " 
+			." VALUES ('1W2D50JIL04J3L5K1', '120', 'Apartment', '3', 'New and modern apartment', 'Balcony,Central Heating', '2022-01-15', '50000');";
+
+			$sql.= "INSERT INTO property (cadastral_reference, square_meters, property_type, number_of_rooms, comment, characteristics, date_publication, price) " 
+			." VALUES ('2OUD50JIL04J3L5G6', '200', 'House', '4', 'Spacious house with garden', 'Garden,Garage', '2019-07-26', '320000');";
+
+			$sql.= "INSERT INTO property (cadastral_reference, square_meters, property_type, number_of_rooms, comment, characteristics, date_publication, price) " 
+			." VALUES ('8P9D50JIL04J3L1H7', '80', 'Apartment', '2', 'Cozy apartment in city center', 'Balcony,Air Conditioning', '2019-03-30', '390000');";
+
+			$sql.= "INSERT INTO property (cadastral_reference, square_meters, property_type, number_of_rooms, comment, characteristics, date_publication, price) " 
+			." VALUES ('44GD50JIL04J3LH58', '300', 'Villa', '5', 'Luxury villa with pool', 'Pool,Garage', '2019-07-26', '600000');";
+
+			$sql.= "INSERT INTO property (cadastral_reference, square_meters, property_type, number_of_rooms, comment, characteristics, date_publication, price) " 
+			." VALUES ('3J4750JIL04J3LKP4', '150', 'Townhouse', '4', 'Townhouse with rooftop terrace', 'Terrace,Central Heating', '2017-06-20', '280000');";
+			$conexion = connect::con();
+            $res = mysqli_multi_query($conexion, $sql);
+            connect::close($conexion);
+			return $res;
 		}
 	}

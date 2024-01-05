@@ -1,11 +1,19 @@
 <div id="contenido" class="property-list-container">
     <div class="container" >
+    <table>
+            
+            <tr>
+                <th><h2 align="center">ADD one record</h2><p align="center"><a href="index.php?page=controller_property&op=create" class="add-button"><i class="fas fa-plus"></i></a></p></th>
+                <th><h2 align="center">ADD with Dummies</h2><p align="center"><a href="index.php?page=controller_property&op=dummies" class="add-button"><i class="fas fa-plus"></i></a></p></th>
+                <th><h2 align="center">Delete All</h2><p align="center"><a href="index.php?page=controller_property&op=delete_all" class="add-button"><i class="fas fa-trash"></i></a></p></th>
+            </tr>
+        </table>
+        <br>
         <div class="row title-row">
             <h1>Properties list</h1>
         </div>
         <div class="row title-row">
-        
-            <p><a href="index.php?page=controller_property&op=create" class="add-button"><i class="fas fa-plus"></i></a>&nbsp&nbsp Add New Property</p>             <table>
+        <table>
                 <tr>
                     <th width=125><b>Cadastral Reference</b></th>
                     <th width=125><b>Square Meters</b></th>
