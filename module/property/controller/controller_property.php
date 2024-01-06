@@ -108,24 +108,24 @@ switch ($_GET['op']) {
                     die('<script>window.location.href="' . $callback . '";</script>');
                 }
             }
-        }
-
-        try {
-            $daoproperty = new DAOproperty();
-            $rdo = $daoproperty->select_property($_GET['id']);
-            // die('<script>console.log('.json_encode( $rdo ) .');</script>');
-            if ($rdo) {
-                $property = get_object_vars($rdo);
+        }else{
+            try {
+                $daoproperty = new DAOproperty();
+                $rdo = $daoproperty->select_property($_GET['id']);
+                // die('<script>console.log('.json_encode( $rdo ) .');</script>');
+                if ($rdo) {
+                    $property = get_object_vars($rdo);
+                }
+                // die('<script>console.log('.json_encode( $property ) .');</script>');
+                
+            } catch (Exception $e) {
+                $callback = 'index.php?page=503';
+                die('<script>window.location.href="' . $callback . '";</script>');
             }
-            // die('<script>console.log('.json_encode( $property ) .');</script>');
-            
-        } catch (Exception $e) {
-            $callback = 'index.php?page=503';
-            die('<script>window.location.href="' . $callback . '";</script>');
+            if ($rdo) {
+                include("module/property/view/update_property.php");
+            }
         }
-        if ($rdo) {
-            include("module/property/view/update_property.php");
-        } 
         break;
 
     case 'read';
@@ -176,21 +176,22 @@ switch ($_GET['op']) {
                 $callback = 'index.php?page=503';
                 die('<script>window.location.href="' . $callback . '";</script>');
             }
-        }
-        try {
-            $daoproperty = new DAOproperty();
-            $rdo = $daoproperty->select_property($_GET['id']);
-            // die('<script>console.log('.json_encode( $rdo ) .');</script>');
-            if ($rdo) {
-                $property = get_object_vars($rdo);
+        }else{
+            try {
+                $daoproperty = new DAOproperty();
+                $rdo = $daoproperty->select_property($_GET['id']);
+                // die('<script>console.log('.json_encode( $rdo ) .');</script>');
+                if ($rdo) {
+                    $property = get_object_vars($rdo);
+                }
+                // die('<script>console.log('.json_encode( $property ) .');</script>');
+                
+            } catch (Exception $e) {
+                $callback = 'index.php?page=503';
+                die('<script>window.location.href="' . $callback . '";</script>');
             }
-            // die('<script>console.log('.json_encode( $property ) .');</script>');
-            
-        } catch (Exception $e) {
-            $callback = 'index.php?page=503';
-            die('<script>window.location.href="' . $callback . '";</script>');
+            include("module/property/view/delete_property.php");
         }
-        include("module/property/view/delete_property.php");
         break;
         case 'delete_all';
         

@@ -2,7 +2,7 @@
     <form autocomplete="on" method="post" name="delete_all_property" id="delete_all_property">
         <table border='0'>
             <tr>
-                <th width=1500><h3>Are you sure you want to delete the entire list of properties?</h3></th>
+                <th width=1500><h3 align="center">Are you sure you want to delete the entire list of properties?</h3></th>
                 <input type="hidden" id="cadastral_reference" name="cadastral_reference" placeholder="cadastral_reference" value="<?php echo $property['id'];?>"/>
             </tr>
         </table>

@@ -12,3 +12,30 @@
         </table>
     </form>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$('form#delete_property').on('submit', function(e) {
+    e.preventDefault();
+
+    $.ajax({
+        url: $(this).attr('action'),
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function(data) {
+            // Mostrar el mensaje de éxito
+            setTimeout(() => {
+                toastr.success("Deleted record correctly in the database.");
+            }, 1000);
+            // Redirigir después de 2 segundos
+            setTimeout(() => {
+                window.location.href="index.php?page=controller_property&op=list";
+            }, 2000);
+        },
+        error: function() {
+            // Redirigir a la página de error
+            window.location.href="index.php?page=503";
+        }
+    });
+});
+</script>
