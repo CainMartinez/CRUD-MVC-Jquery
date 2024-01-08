@@ -32,11 +32,8 @@ function validate_update(){
     $cadastral_reference = $_POST['cadastral_reference'];
     $cadastral_reference = validate_cadastral_reference($cadastral_reference);
 
-    if ($cadastral_reference !== null) {
-        if ($cadastral_reference === $_POST['cadastral_reference_old']) {
-                echo '<script language="javascript">setTimeout(() => {
-                    toastr.error("The cadastral reference number cannot be repeated.");
-                }, 1000);</script>';
+    if($cadastral_reference !== null){
+        if($cadastral_reference !== $_POST['cadastral_reference_old']){
             $check = false;
         }
     }

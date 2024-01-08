@@ -1,7 +1,7 @@
 <div id="contenido" class="form-container">
     <form autocomplete="on" method="post" name="update_property" id="update_property"> 
         <h1>Update Property</h1>
-        <table width="75%" border="0">
+        <table width="auto" border="0">
         <input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
         <input type="hidden" name="cadastral_reference_old" value="<?php echo isset($property['cadastral_reference']) ? $property['cadastral_reference'] : ''; ?>">
                 <td>Cadastral Reference</td>
@@ -144,29 +144,3 @@
             </table>
             </form>
             </div>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script>
-            $('form#update_property').on('submit', function(e) {
-                e.preventDefault();
-
-                $.ajax({
-                    url: $(this).attr('action'),
-                    type: 'POST',
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        // Mostrar el mensaje de éxito
-                        setTimeout(() => {
-                            toastr.success("Updated record correctly in the database.");
-                        }, 1000);
-                        // Redirigir después de 2 segundos
-                        setTimeout(() => {
-                            window.location.href="index.php?page=controller_property&op=list";
-                        }, 2000);
-                    },
-                    error: function() {
-                        // Redirigir a la página de error
-                        window.location.href="index.php?page=503";
-                    }
-                });
-            });
-            </script>

@@ -71,8 +71,8 @@ switch ($_GET['op']) {
         break;
 
     case 'update';
-    // $data = 'Update property OK';
-    // die('<script>console.log('.json_encode( $data ) .');</script>');
+        // $data = 'Update property OK';
+        // die('<script>console.log('.json_encode( $data ) .');</script>');
         include("module/property/model/validate.php");
         $check = true;
 
@@ -89,26 +89,44 @@ switch ($_GET['op']) {
                     $rdo = $daoproperty->update_property($_POST);
                     // die('<script>console.log('.json_encode( $rdo ) .');</script>'); //Resultado es true. Query correcta.
                     // die('<script>console.log('.json_encode( $_GET['id'] ) .');</script>');
-
+                    if ($rdo) {
+                        echo '<script language="javascript">setTimeout(() => {
+                            toastr.success("Record modified correctly in the database.");
+                            }, 1000);</script>';
+                        echo '<script language="javascript">setTimeout(() => {
+                                window.location.href="index.php?page=controller_property&op=list";
+                            }, 2000);</script>';
+                    } else {
+                        $callback = 'index.php?page=503';
+                        die('<script>window.location.href="' . $callback . '";</script>');
+                    }
                 } catch (Exception $e) {
                     $callback = 'index.php?page=503';
                     die('<script>window.location.href="' . $callback . '";</script>');
                 }
-
+            }elseif ($_POST['cadastral_reference_old'] === $_POST['cadastral_reference']){
+                $dao_property = new DAOProperty();
+                $rdo = $dao_property->update_property_new($_POST);
                 if ($rdo) {
                     echo '<script language="javascript">setTimeout(() => {
-                        alert("Record modified correctly in the database.");
-                        }, 0);</script>';
+                        toastr.success("Record modified correctly in the database.");
+                        }, 1000);</script>';
                     echo '<script language="javascript">setTimeout(() => {
                             window.location.href="index.php?page=controller_property&op=list";
-                        }, 0);</script>';
-                        
+                        }, 2000);</script>';
                 } else {
                     $callback = 'index.php?page=503';
                     die('<script>window.location.href="' . $callback . '";</script>');
                 }
+            }else{
+                echo '<script language="javascript">setTimeout(() => {
+                    toastr.error("The cadastral reference number cannot be repeated.");
+                    }, 1000);</script>';
+                echo '<script language="javascript">setTimeout(() => {
+                    window.location.href="index.php?page=controller_property&op=list";
+                }, 2000);</script>';
             }
-        }else{
+        } else {
             try {
                 $daoproperty = new DAOproperty();
                 $rdo = $daoproperty->select_property($_GET['id']);
@@ -117,7 +135,7 @@ switch ($_GET['op']) {
                     $property = get_object_vars($rdo);
                 }
                 // die('<script>console.log('.json_encode( $property ) .');</script>');
-                
+
             } catch (Exception $e) {
                 $callback = 'index.php?page=503';
                 die('<script>window.location.href="' . $callback . '";</script>');
@@ -160,7 +178,6 @@ switch ($_GET['op']) {
             try {
                 $daoproperty = new DAOproperty();
                 $rdo = $daoproperty->delete_property($_GET['id']);
-                
             } catch (Exception $e) {
                 $callback = 'index.php?page=503';
                 die('<script>window.location.href="' . $callback . '";</script>');
@@ -176,7 +193,7 @@ switch ($_GET['op']) {
                 $callback = 'index.php?page=503';
                 die('<script>window.location.href="' . $callback . '";</script>');
             }
-        }else{
+        } else {
             try {
                 $daoproperty = new DAOproperty();
                 $rdo = $daoproperty->select_property($_GET['id']);
@@ -185,7 +202,7 @@ switch ($_GET['op']) {
                     $property = get_object_vars($rdo);
                 }
                 // die('<script>console.log('.json_encode( $property ) .');</script>');
-                
+
             } catch (Exception $e) {
                 $callback = 'index.php?page=503';
                 die('<script>window.location.href="' . $callback . '";</script>');
@@ -193,56 +210,56 @@ switch ($_GET['op']) {
             include("module/property/view/delete_property.php");
         }
         break;
-        case 'delete_all';
-        
-        if ($_POST){
-            try{
+    case 'delete_all';
+
+        if ($_POST) {
+            try {
                 $dao_property = new DAOProperty();
-                $rdo = $dao_property -> delete_all_property();
-            }catch (Exception $e){
+                $rdo = $dao_property->delete_all_property();
+            } catch (Exception $e) {
                 $callback = 'index.php?page=controller_property&op=503';
-                die('<script>window.location.href="'.$callback .'";</script>');
+                die('<script>window.location.href="' . $callback . '";</script>');
             }
-            
-            if($rdo){
+
+            if ($rdo) {
                 echo '<script language="javascript">setTimeout(() => {
                     toastr.success("List of properties deleted correctly.");
                 }, 1000);</script>';
                 $callback = 'index.php?page=controller_property&op=list';
-                die('<script>window.location.href="'.$callback .'";</script>');
-            }else{
+                die('<script>window.location.href="' . $callback . '";</script>');
+            } else {
                 $callback = 'index.php?page=controller_property&op=503';
-                die('<script>window.location.href="'.$callback .'";</script>');
+                die('<script>window.location.href="' . $callback . '";</script>');
             }
         }
-        
+
         include("module/property/view/delete_all_property.php");
-    break;
+        break;
 
     case 'dummies';
-        if ($_POST){
-            try{
+        if ($_POST) {
+            try {
                 $dao_property = new DAOProperty();
-                $rdo = $dao_property -> dummies_property();
-            }catch (Exception $e){
+                $rdo = $dao_property->dummies_property();
+            } catch (Exception $e) {
                 $callback = 'index.php?page=controller_property&op=503';
-                die('<script>window.location.href="'.$callback .'";</script>');
+                die('<script>window.location.href="' . $callback . '";</script>');
             }
 
-            if($rdo){
+            if ($rdo) {
                 echo '<script language="javascript">setTimeout(() => {
                     toastr.success("Dummies added correctly.");
                 }, 1000);</script>';
                 $callback = 'index.php?page=controller_property&op=list';
-                die('<script>window.location.href="'.$callback .'";</script>');
-            }else{
+                die('<script>window.location.href="' . $callback . '";</script>');
+            } else {
                 $callback = 'index.php?page=controller_property&op=503';
-                die('<script>window.location.href="'.$callback .'";</script>');
+                die('<script>window.location.href="' . $callback . '";</script>');
             }
         }
-        
+
         include("module/property/view/dummies_property.php");
-    break;
+        break;
     default;
         include("view/inc/error404.php");
         break;
