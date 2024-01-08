@@ -1,5 +1,5 @@
 <div id="footer">
-    <a href="">Contact Number</a>&nbsp;&nbsp;·&nbsp;&nbsp;
-	<a href="">Email</a>&nbsp;&nbsp;·&nbsp;&nbsp;
-	<a href="">Address</a>&nbsp;&nbsp;
+    <a href="">Contact Number</a>
+	<a href="">Email</a>
+	<a href="">Address</a>
 </div>

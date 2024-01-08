@@ -260,7 +260,7 @@ h1 {
     margin-bottom: 10px;
 }
 #menu, #footer {
-	background-color: cyan;
+	background-color: lightcyan;
 	overflow: hidden;
 	text-align: center;
 }
@@ -276,7 +276,7 @@ h1 {
 }
 
 #menu a:hover, #footer a:hover {
-	background-color: lightcyan;
+	background-color: cyan;
 	color: black;
 }
 
