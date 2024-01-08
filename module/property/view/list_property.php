@@ -1,7 +1,6 @@
 <div id="contenido" class="property-list-container">
     <div class="container" >
     <table>
-            
             <tr>
                 <th><h2 align="center">ADD one record</h2><p align="center"><a href="index.php?page=controller_property&op=create" class="add-button"><i class="fas fa-plus"></i></a></p></th>
                 <th><h2 align="center">ADD with Dummies</h2><p align="center"><a href="index.php?page=controller_property&op=dummies" class="add-button"><i class="fas fa-plus"></i></a></p></th>
@@ -56,3 +55,20 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<section id="property_modal">
+    <div id="details_property" hidden>
+        <div id="details">
+            <div id="container">
+                Cadastral Reference: <div id="cadastral_reference"></div></br>
+                Square Meters: <div id="square_meters"></div></br>
+                Property Type: <div id="property_type"></div></br>
+                Number of Rooms: <div id="number_of_rooms"></div></br>
+                Comment: <div id="comment"></div></br>
+                Characteristics: <div id="characteristics"></div></br>
+                Date of Publication: <div id="date_publication"></div></br>
+                Price: <div id="price"></div></br>
+            </div>
+        </div>
+    </div>
+</section>

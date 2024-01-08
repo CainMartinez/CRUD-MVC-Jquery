@@ -237,6 +237,7 @@ switch ($_GET['op']) {
         break;
 
     case 'dummies';
+
         if ($_POST) {
             try {
                 $dao_property = new DAOProperty();
@@ -260,6 +261,27 @@ switch ($_GET['op']) {
 
         include("module/property/view/dummies_property.php");
         break;
+        case 'read_modal':
+            //echo $_GET["modal"]; 
+            //exit;
+
+            try{
+                $daoproperty = new DAOProperty();
+            	$rdo = $daoproperty->select_property($_GET['modal']);
+            }catch (Exception $e){
+                echo json_encode("error");
+                exit;
+            }
+            if(!$rdo){
+    			echo json_encode("error");
+                exit;
+    		}else{
+    		    $property=get_object_vars($rdo);
+                echo json_encode($property);
+                //echo json_encode("error");
+                exit;
+    		}
+            break;
     default;
         include("view/inc/error404.php");
         break;

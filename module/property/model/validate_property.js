@@ -212,3 +212,48 @@ function operations_property(op){
         document.getElementById('dummies_property').action = "index.php?page=controller_property&op=dummies";
     }
 }
+$(document).ready(function () {
+    $('.property').click(function () {
+        var id = this.getAttribute('id');
+
+        $.get("module/property/controller/controller_property.php?op=read_modal&modal=" + id, 
+        function (data, status) {
+            var json = JSON.parse(data);
+            console.log(json);
+            
+            if(json === 'error') {
+                window.location.href='index.php?page=503';
+            }else{
+                console.log(json.property);
+                $("#cadastral_reference").html(json.cadastral_reference);
+                $("#square_meters").html(json.square_meters);
+                $("#property_type").html(json.property_type);
+                $("#number_of_rooms").html(json.number_of_rooms);
+                $("#comment").html(json.comment);
+                $("#characteristics").html(json.characteristics);
+                $("#date_publication").html(json.date_publication);
+                $("#price").html(json.price);
+                $("#details_property").show();
+                $("#property_modal").dialog({
+                    width: 850,
+                    height: 500,
+                    resizable: "false",
+                    modal: "true",
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    },
+                    show: {
+                        effect: "blind",
+                        duration: 1000
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    }
+                });
+            }
+        });
+    });
+});
