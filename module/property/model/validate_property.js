@@ -96,7 +96,7 @@ function validate(op) {
     var v_characteristics = document.getElementsByName('characteristics[]');
     console.log('v_characteristics:', v_characteristics);
 
-    
+
 
     var v_price = document.getElementById('price').value;
     console.log('v_price:', v_price);
@@ -181,16 +181,16 @@ function validate(op) {
     // });
 
     //return check;
-    if (check){
+    if (check) {
         // console.log('Check true OK');
         // return true;
-        if (op == 'create'){
+        if (op == 'create') {
             // console.log('create js OK');
             // return true;
             document.getElementById('alta_property').submit();
             document.getElementById('alta_property').action = "index.php?page=controller_property&op=create";
         }
-        if (op == 'update'){
+        if (op == 'update') {
             // console.log('update js OK');
             // return true;
             document.getElementById('update_property').submit();
@@ -198,33 +198,35 @@ function validate(op) {
         }
     }
 }
-function operations_property(op){
-    if (op == 'delete'){
+function operations_property(op) {
+    if (op == 'delete') {
         document.getElementById('delete_property').submit();
         document.getElementById('delete_property').action = "index.php?page=controller_property&op=delete";
     }
-    if (op == 'delete_all'){
+    if (op == 'delete_all') {
         document.getElementById('delete_all_property').submit();
         document.getElementById('delete_all_property').action = "index.php?page=controller_property&op=delete_all";
     }
-    if (op == 'dummies'){
+    if (op == 'dummies') {
         document.getElementById('dummies_property').submit();
         document.getElementById('dummies_property').action = "index.php?page=controller_property&op=dummies";
     }
 }
 $(document).ready(function () {
-    $('.property').click(function () {
+    $('.cadastral_reference').click(function () {
         var id = this.getAttribute('id');
-
-        $.get("module/property/controller/controller_property.php?op=read_modal&modal=" + id, 
+        // alert(id);
+        $.get("module/property/controller/controller_property.php?op=read_modal&modal=" + id,
         function (data, status) {
+            // console.log("Response:", data);
             var json = JSON.parse(data);
-            console.log(json);
-            
-            if(json === 'error') {
-                window.location.href='index.php?page=503';
-            }else{
-                console.log(json.property);
+            // console.log(json);
+
+            if (json === 'error') {
+                // console.log(json);
+                window.location.href = 'index.php?page=503';
+            } else {
+                // console.log(json.cadastral_reference);
                 $("#cadastral_reference").html(json.cadastral_reference);
                 $("#square_meters").html(json.square_meters);
                 $("#property_type").html(json.property_type);
@@ -233,14 +235,16 @@ $(document).ready(function () {
                 $("#characteristics").html(json.characteristics);
                 $("#date_publication").html(json.date_publication);
                 $("#price").html(json.price);
+
                 $("#details_property").show();
                 $("#property_modal").dialog({
-                    width: 850,
-                    height: 500,
+                    width: $(window).width() * 0.25,  
+                    height: $(window).height() * 0.70, 
+                    position: ['center', 'middle'],
                     resizable: "false",
                     modal: "true",
                     buttons: {
-                        Ok: function () {
+                        CLOSE: function () {
                             $(this).dialog("close");
                         }
                     },

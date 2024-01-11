@@ -1,5 +1,7 @@
 <?php
-    include("model/connect.php");
+
+	$path = $_SERVER['DOCUMENT_ROOT'];
+    include($path . "/model/connect.php");
     
 	class DAOProperty{
 		function insert_property($datos){

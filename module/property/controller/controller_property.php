@@ -1,8 +1,10 @@
 <?php
 // $data = 'Contoller property OK';
 // die('<script>console.log('.json_encode( $data ) .');</script>');
-
-include("module/property/model/DAOProperty.php");
+$env = parse_ini_file('C:/sites/.env.ini');
+$path = $_SERVER['DOCUMENT_ROOT'];
+// echo '<script>console.log('.json_encode( $path ) .');</script>';
+include($path . "/module/property/model/DAOProperty.php");
 // session_start();
 
 switch ($_GET['op']) {
@@ -66,8 +68,9 @@ switch ($_GET['op']) {
                     // die('<script>window.location.href="' . $callback . '";</script>');
                 }
             }
+        }else{
+            include("module/property/view/create_property.php");
         }
-        include("module/property/view/create_property.php");
         break;
 
     case 'update';
@@ -261,27 +264,28 @@ switch ($_GET['op']) {
 
         include("module/property/view/dummies_property.php");
         break;
-        case 'read_modal':
-            //echo $_GET["modal"]; 
-            //exit;
 
-            try{
-                $daoproperty = new DAOProperty();
-            	$rdo = $daoproperty->select_property($_GET['modal']);
-            }catch (Exception $e){
-                echo json_encode("error");
-                exit;
-            }
-            if(!$rdo){
-    			echo json_encode("error");
-                exit;
-    		}else{
-    		    $property=get_object_vars($rdo);
-                echo json_encode($property);
-                //echo json_encode("error");
-                exit;
-    		}
-            break;
+    case 'read_modal':
+        // echo $_GET["modal"];//Referencia catastral recojida por URL. 
+        // exit;
+
+        try{
+            $daoproperty = new DAOProperty();
+            $rdo = $daoproperty->select_property($_GET['modal']);
+        }catch (Exception $e){
+            echo json_encode("error");
+            exit;
+        }
+        if(!$rdo){
+            echo json_encode("error");
+            exit;
+        }else{
+            $property=get_object_vars($rdo);
+            echo json_encode($property);
+            //echo json_encode("error");
+            exit;
+        }
+        break;
     default;
         include("view/inc/error404.php");
         break;

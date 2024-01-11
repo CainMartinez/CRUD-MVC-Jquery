@@ -41,7 +41,8 @@
                         echo '<td width=125>' . $row['date_publication'] . '</td>';
                         echo '<td width=125>' . $row['price'] . '</td>';
                         echo '<td width=350>';
-                        echo '<a class="Button_blue" href="index.php?page=controller_property&op=read&id=' . $row['cadastral_reference'] . '"><i class="fas fa-eye"></i></a>';
+                        print ("<div class='cadastral_reference Button_blue' id='".$row['cadastral_reference']."'><i class='fas fa-eye'></i></div>");  //READ
+                        // echo '<a class="Button_blue" href="index.php?page=controller_property&op=read&id=' . $row['cadastral_reference'] . '"><i class="fas fa-eye"></i></a>';
                         echo '&nbsp;';
                         echo '<a class="Button_green" href="index.php?page=controller_property&op=update&id=' . $row['cadastral_reference'] . '"><i class="fas fa-edit"></i></a>';
                         echo '&nbsp;';
