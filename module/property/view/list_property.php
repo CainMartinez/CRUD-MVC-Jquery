@@ -58,18 +58,5 @@
 </div>
 <!-- Modal -->
 <section id="property_modal">
-    <div id="details_property" hidden>
-        <div id="details">
-            <div id="container">
-                Cadastral Reference: <div id="cadastral_reference"></div></br>
-                Square Meters: <div id="square_meters"></div></br>
-                Property Type: <div id="property_type"></div></br>
-                Number of Rooms: <div id="number_of_rooms"></div></br>
-                Comment: <div id="comment"></div></br>
-                Characteristics: <div id="characteristics"></div></br>
-                Date of Publication: <div id="date_publication"></div></br>
-                Price: <div id="price"></div></br>
-            </div>
-        </div>
-    </div>
+    
 </section>

@@ -1,7 +1,7 @@
 <?php
 // $data = 'Contoller property OK';
 // die('<script>console.log('.json_encode( $data ) .');</script>');
-$env = parse_ini_file('C:/sites/.env.ini');
+// $env = parse_ini_file('C:/sites/.env.ini');
 $path = $_SERVER['DOCUMENT_ROOT'];
 // echo '<script>console.log('.json_encode( $path ) .');</script>';
 include($path . "/module/property/model/DAOProperty.php");

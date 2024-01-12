@@ -261,3 +261,52 @@ $(document).ready(function () {
         });
     });
 });
+function showModal(title_Car, id) {
+    $("#details_car").show();
+    $("#car_modal").dialog({
+        title: title_Car,
+        width : 850,
+        height: 500,
+        resizable: "false",
+        modal: "true",
+        hide: "fold",
+        show: "fold",
+        buttons : {
+            Update: function() {
+                        window.location.href = 'index.php?module=cars&op=update&id=' + id;
+                    },
+            Delete: function() {
+                        window.location.href = 'index.php?module=cars&op=delete&id=' + id;
+                    }
+        }
+    });
+}
+
+function loadContentModal() {
+    $('.id').click(function () {
+        var id = this.getAttribute('id');
+        ajaxPromise('module/cars/controller/controller_cars.php?op=read_modal&id=' + id, 'GET', 'JSON')
+        .then(function(data) {
+            // var data = JSON.parse(data);
+            $('<div></div>').attr('id', 'details_car', 'type', 'hidden').appendTo('#car_modal');
+            $('<div></div>').attr('id', 'container').appendTo('#details_car');
+            $('#container').empty();
+            $('<div></div>').attr('id', 'car_content').appendTo('#container');
+            $('#car_content').html(function() {
+                var content = "";
+                for (row in data) {
+                    content += '<br><span>' + row + ': <span id =' + row + '>' + data[row] + '</span></span>';
+                }
+                return content;
+                });
+                showModal(title_car = data.brand + " " + data.model, data.id);
+        })
+        .catch(function() {
+            window.location.href = 'index.php?module=errors&op=503&desc=List error';
+        });
+    });
+}
+
+$(document).ready(function() {
+    loadContentModal();
+});
