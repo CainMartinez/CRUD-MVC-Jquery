@@ -212,97 +212,57 @@ function operations_property(op) {
         document.getElementById('dummies_property').action = "index.php?page=controller_property&op=dummies";
     }
 }
-$(document).ready(function () {
-    $('.cadastral_reference').click(function () {
-        var id = this.getAttribute('id');
-        // alert(id);
-        $.get("module/property/controller/controller_property.php?op=read_modal&modal=" + id,
-        function (data, status) {
-            // console.log("Response:", data);
-            var json = JSON.parse(data);
-            // console.log(json);
 
-            if (json === 'error') {
-                // console.log(json);
-                window.location.href = 'index.php?page=503';
-            } else {
-                // console.log(json.cadastral_reference);
-                $("#cadastral_reference").html(json.cadastral_reference);
-                $("#square_meters").html(json.square_meters);
-                $("#property_type").html(json.property_type);
-                $("#number_of_rooms").html(json.number_of_rooms);
-                $("#comment").html(json.comment);
-                $("#characteristics").html(json.characteristics);
-                $("#date_publication").html(json.date_publication);
-                $("#price").html(json.price);
-
-                $("#details_property").show();
-                $("#property_modal").dialog({
-                    width: $(window).width() * 0.25,  
-                    height: $(window).height() * 0.70, 
-                    position: ['center', 'middle'],
-                    resizable: "false",
-                    modal: "true",
-                    buttons: {
-                        CLOSE: function () {
-                            $(this).dialog("close");
-                        }
-                    },
-                    show: {
-                        effect: "blind",
-                        duration: 1000
-                    },
-                    hide: {
-                        effect: "explode",
-                        duration: 1000
-                    }
-                });
-            }
-        });
-    });
-});
-function showModal(title_Car, id) {
-    $("#details_car").show();
-    $("#car_modal").dialog({
-        title: title_Car,
-        width : 850,
-        height: 500,
+function showModal(title_Property, id) {
+    $("#details_property").show();
+    $("#property_modal").dialog({
+        title: title_Property,
+        width: $(window).width() * 0.25,  
+        height: $(window).height() * 0.70, 
+        position: ['center', 'middle'],
         resizable: "false",
         modal: "true",
-        hide: "fold",
-        show: "fold",
+        show: {
+            effect: "blind",
+            duration: 1000
+        },
+        hide: {
+            effect: "explode",
+            duration: 1000
+        },
         buttons : {
             Update: function() {
-                        window.location.href = 'index.php?module=cars&op=update&id=' + id;
+                        window.location.href = 'index.php?module=property&op=update&id=' + id;
                     },
             Delete: function() {
-                        window.location.href = 'index.php?module=cars&op=delete&id=' + id;
+                        window.location.href = 'index.php?module=property&op=delete&id=' + id;
                     }
         }
     });
 }
 
 function loadContentModal() {
-    $('.id').click(function () {
+    $('.cadastral_reference').click(function () {
         var id = this.getAttribute('id');
-        ajaxPromise('module/cars/controller/controller_cars.php?op=read_modal&id=' + id, 'GET', 'JSON')
+        ajaxPromise('module/property/controller/controller_property.php?op=read_modal&id=' + id, 'GET', 'JSON')
         .then(function(data) {
-            // var data = JSON.parse(data);
-            $('<div></div>').attr('id', 'details_car', 'type', 'hidden').appendTo('#car_modal');
-            $('<div></div>').attr('id', 'container').appendTo('#details_car');
+            var data = JSON.parse(data);
+            $('<div></div>').attr('id', 'details_property', 'type', 'hidden').appendTo('#property_modal');
+            $('<div></div>').attr('id', 'container').appendTo('#details_property');
             $('#container').empty();
-            $('<div></div>').attr('id', 'car_content').appendTo('#container');
-            $('#car_content').html(function() {
+            $('<div></div>').attr('id', 'property_content').appendTo('#container');
+            $('#property_content').html(function() {
                 var content = "";
                 for (row in data) {
                     content += '<br><span>' + row + ': <span id =' + row + '>' + data[row] + '</span></span>';
                 }
                 return content;
                 });
-                showModal(title_car = data.brand + " " + data.model, data.id);
+                showModal(title_Property = data.brand + " " + data.model, data.id);
         })
         .catch(function() {
-            window.location.href = 'index.php?module=errors&op=503&desc=List error';
+            console.log("Error");
+            // window.location.href = 'index.php?module=errors&op=503&desc=List error';
         });
     });
 }
