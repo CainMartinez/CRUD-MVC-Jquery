@@ -219,7 +219,7 @@ function showModal(title_Property, id) {
         title: title_Property,
         width: $(window).width() * 0.25,  
         height: $(window).height() * 0.70, 
-        position: ['center', 'middle'],
+        // position: ['center', 'middle'],
         resizable: "false",
         modal: "true",
         show: {
@@ -246,19 +246,20 @@ function loadContentModal() {
         var id = this.getAttribute('id');
         ajaxPromise('GET', 'JSON','module/property/controller/controller_property.php?op=read_modal&id=' + id, )
         .then(function(data) {
-            var data = JSON.parse(data);
-            $('<div></div>').attr('id', 'details_property', 'type', 'hidden').appendTo('#property_modal');
-            $('<div></div>').attr('id', 'container').appendTo('#details_property');
-            $('#container').empty();
-            $('<div></div>').attr('id', 'property_content').appendTo('#container');
-            $('#property_content').html(function() {
-                var content = "";
-                for (row in data) {
-                    content += '<br><span>' + row + ': <span id =' + row + '>' + data[row] + '</span></span>';
-                }
-                return content;
-                });
-                showModal(title_Property = data.brand + " " + data.model, data.id);
+            // var data = JSON.parse(data);
+            console.log(data);
+            // $('<div></div>').attr('id', 'details_property', 'type', 'hidden').appendTo('#property_modal');
+            // $('<div></div>').attr('id', 'container').appendTo('#details_property');
+            // $('#container').empty();
+            // $('<div></div>').attr('id', 'property_content').appendTo('#container');
+            // $('#property_content').html(function() {
+            //     var content = "";
+            //     for (row in data) {
+            //         content += '<br><span>' + row + ': <span id =' + row + '>' + data[row] + '</span></span>';
+            //     }
+            //     return content;
+            //     });
+            //     showModal(title_Property = data.brand + " " + data.model, data.id);
         })
         .catch(function(error) {
             console.log("Error", error);

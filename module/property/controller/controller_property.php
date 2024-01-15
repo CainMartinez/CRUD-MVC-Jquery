@@ -281,11 +281,8 @@ switch ($_GET['op']) {
             exit;
         }else{
             $property=get_object_vars($rdo);
-            if (is_array($property)) {
-                echo json_encode($property);
-            } else {
-                echo json_encode("Error: Property is not an array.");
-            }
+            echo json_encode($property);
+            //echo json_encode("error");
             exit;
         }
         break;
