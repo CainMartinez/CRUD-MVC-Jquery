@@ -244,7 +244,7 @@ function showModal(title_Property, id) {
 function loadContentModal() {
     $('.cadastral_reference').click(function () {
         var id = this.getAttribute('id');
-        ajaxPromise('module/property/controller/controller_property.php?op=read_modal&id=' + id, 'GET', 'JSON')
+        ajaxPromise('GET', 'JSON','module/property/controller/controller_property.php?op=read_modal&id=' + id, )
         .then(function(data) {
             var data = JSON.parse(data);
             $('<div></div>').attr('id', 'details_property', 'type', 'hidden').appendTo('#property_modal');
@@ -260,9 +260,9 @@ function loadContentModal() {
                 });
                 showModal(title_Property = data.brand + " " + data.model, data.id);
         })
-        .catch(function() {
-            console.log("Error");
-            // window.location.href = 'index.php?module=errors&op=503&desc=List error';
+        .catch(function(error) {
+            console.log("Error", error);
+            // window.location.href = 'index.php?page=503';
         });
     });
 }
