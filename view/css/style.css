@@ -12,22 +12,37 @@ body {
 	background-repeat: no-repeat;
 	font-family: sans-serif;
 }
+#details_property {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#details_property td, #details_property th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#details_property tr:nth-child(even){background-color: #f2f2f2;}
+
+#details_property tr:hover {background-color: #ddd;}
+
+#details_property th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
 h1 {
 	font-size: 32pt;
 }
-
 .ui-widget-header {
     border: 1px solid cyan;
     background: lightblue 50% 50% repeat-x;
     color: #ffffff;
     font-weight: bold;
 }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-default {
-	border: 1px solid cyan;
-	background: lightblue 50% 50% repeat-x;
-	font-weight: bold;
-	color: #ffffff;
-}
+
 #wrapper {
 	width: 95%;
 	margin: auto;
@@ -90,7 +105,11 @@ h1 {
 .Button_green:hover {
 	background-color: greenyellow;
 }
-
+#property_content {
+	margin: auto;
+	padding: 10px;
+	width: 90%;
+}
 .Button_green:active {
 	position: relative;
 	top: 1px;

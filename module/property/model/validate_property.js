@@ -213,12 +213,14 @@ function operations_property(op) {
     }
 }
 
-function showModal(title_Property, id) {
+function showModal(title_Property, id , $property) {
+    var cadastral_reference = $property['cadastral_reference'];
     $("#details_property").show();
     $("#property_modal").dialog({
         title: 'Details of property ' + id,
         width: $(window).width() * 0.25,  
         height: $(window).height() * 0.70,
+        closeText: "",
         resizable: "false",
         modal: "true",
         show: {
@@ -231,35 +233,28 @@ function showModal(title_Property, id) {
         },
         buttons : {
             Update: function() {
-                        window.location.href = 'index.php?module=property&op=update&id=' + id;
+                        window.location.href = 'index.php?page=controller_property&op=update&id=' + cadastral_reference;
                     },
             Delete: function() {
-                        window.location.href = 'index.php?module=property&op=delete&id=' + id;
+                        window.location.href = 'index.php?page=controller_property&op=delete&id=' + cadastral_reference;
                     }
         }
     });
 }
 function contentThen(data){
-    $('<div></div>').attr('id', 'details_property', 'type', 'hidden').appendTo('#property_modal');
-    $('<div></div>').attr('id', 'container').appendTo('#details_property');
+    $('<table></table>').attr('id', 'details_property').appendTo('#property_modal');
+    $('<tbody></tbody>').attr('id', 'container').appendTo('#details_property');
     $('#container').empty();
-    $('<div></div>').attr('id', 'property_content').appendTo('#container');
-    $('#property_content').html(function() {
-        var content = "";
-        for (row in data) {
-            content += '<br><span>' + row + ': <span id =' + row + '>' + data[row] + '</span></span>';
-        }
-        return content;
-        });
-        showModal(title_Property = data.brand + " " + data.model, data.id);
+    for (row in data) {
+        $('<tr></tr>').html('<td>' + row + '</td><td id=' + row + '>' + data[row] + '</td>').appendTo('#container');
+    }
+    showModal(data.brand + " " + data.model, data.id, data);
 }
 function loadContentModal() {
     $('.cadastral_reference').click(function () {
         var id = this.getAttribute('id');
         ajaxPromise('GET', 'JSON','module/property/controller/controller_property.php?op=read_modal&modal=' + id, )
         .then(function(data) {
-            // var data = JSON.parse(data);
-            // console.log(data);
             contentThen(data);
         })
         .catch(function(error) {
