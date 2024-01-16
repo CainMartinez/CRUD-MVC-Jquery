@@ -216,10 +216,9 @@ function operations_property(op) {
 function showModal(title_Property, id) {
     $("#details_property").show();
     $("#property_modal").dialog({
-        title: title_Property,
+        title: 'Details of property ' + id,
         width: $(window).width() * 0.25,  
-        height: $(window).height() * 0.70, 
-        // position: ['center', 'middle'],
+        height: $(window).height() * 0.70,
         resizable: "false",
         modal: "true",
         show: {
@@ -240,30 +239,32 @@ function showModal(title_Property, id) {
         }
     });
 }
-
+function contentThen(data){
+    $('<div></div>').attr('id', 'details_property', 'type', 'hidden').appendTo('#property_modal');
+    $('<div></div>').attr('id', 'container').appendTo('#details_property');
+    $('#container').empty();
+    $('<div></div>').attr('id', 'property_content').appendTo('#container');
+    $('#property_content').html(function() {
+        var content = "";
+        for (row in data) {
+            content += '<br><span>' + row + ': <span id =' + row + '>' + data[row] + '</span></span>';
+        }
+        return content;
+        });
+        showModal(title_Property = data.brand + " " + data.model, data.id);
+}
 function loadContentModal() {
     $('.cadastral_reference').click(function () {
         var id = this.getAttribute('id');
-        ajaxPromise('GET', 'JSON','module/property/controller/controller_property.php?op=read_modal&id=' + id, )
+        ajaxPromise('GET', 'JSON','module/property/controller/controller_property.php?op=read_modal&modal=' + id, )
         .then(function(data) {
             // var data = JSON.parse(data);
-            console.log(data);
-            // $('<div></div>').attr('id', 'details_property', 'type', 'hidden').appendTo('#property_modal');
-            // $('<div></div>').attr('id', 'container').appendTo('#details_property');
-            // $('#container').empty();
-            // $('<div></div>').attr('id', 'property_content').appendTo('#container');
-            // $('#property_content').html(function() {
-            //     var content = "";
-            //     for (row in data) {
-            //         content += '<br><span>' + row + ': <span id =' + row + '>' + data[row] + '</span></span>';
-            //     }
-            //     return content;
-            //     });
-            //     showModal(title_Property = data.brand + " " + data.model, data.id);
+            // console.log(data);
+            contentThen(data);
         })
         .catch(function(error) {
             console.log("Error", error);
-            // window.location.href = 'index.php?page=503';
+            window.location.href = 'index.php?page=503';
         });
     });
 }
